@@ -481,24 +481,27 @@ m2=0..1</panel_attributes>
     <coordinates>
       <x>300</x>
       <y>100</y>
-      <w>195</w>
-      <h>25</h>
+      <w>220</w>
+      <h>50</h>
     </coordinates>
-    <panel_attributes>/Login/
+    <panel_attributes>/LoginDao/
 --
--login(username : String, password : HashedString) : Role</panel_attributes>
+-verifyLogin(username : String, password : HashedString) : Role
+-addLogin(user : User): void
+-updateLogin(user : User): void
+-deleteLogin(user : User): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
+      <x>515</x>
       <y>105</y>
-      <w>150</w>
+      <w>125</w>
       <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>280.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>230.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -519,13 +522,13 @@ m2=0..1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>420</x>
-      <y>120</y>
+      <y>145</y>
       <w>45</w>
-      <h>60</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;verifies&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
