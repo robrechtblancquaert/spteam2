@@ -16,7 +16,7 @@ public abstract class BookApi extends BookApiConnection{
 	 * @return A book object with the given id, or null if none was found.
 	 */
 	public static Book findBookById(String id) {
-		if(id == null) {
+		if(id == null  || id.length() == 0) {
 			return null;
 		}
 		return BookApiConnection.getBookById(id);
@@ -31,7 +31,16 @@ public abstract class BookApi extends BookApiConnection{
 	 * @return A list of Books correlating to the searchterms.
 	 */
 	public static ArrayList<Book> findBooksBySearch(ArrayList<String> searchterms, int index, int resultSize) {
-		if (searchterms == null || index < 0 || resultSize < 1) {
+		if (searchterms == null || index < 0 || resultSize < 1  || searchterms.size() == 0) {
+			return null;
+		}
+		int totalNulls = 0;
+		for(String s : searchterms) {
+			if(s.length() == 0) {
+				totalNulls++;
+			}
+		}
+		if(totalNulls == searchterms.size()) {
 			return null;
 		}
 		return BookApiConnection.searchBooks(searchterms, index, resultSize);
@@ -41,17 +50,35 @@ public abstract class BookApi extends BookApiConnection{
 	 * @see #findBooksBySearch(ArrayList, int, int) with resultSize = 20.
 	 */
 	public static ArrayList<Book> findBooksBySearch(ArrayList<String> searchterms, int index) {
-		if (searchterms == null || index < 0) {
+		if (searchterms == null || index < 0  || searchterms.size() == 0) {
 			return null;
 		}
-		return BookApiConnection.searchBooks(searchterms);
+		int totalNulls = 0;
+		for(String s : searchterms) {
+			if(s.length() == 0) {
+				totalNulls++;
+			}
+		}
+		if(totalNulls == searchterms.size()) {
+			return null;
+		}
+		return BookApiConnection.searchBooks(searchterms, index);
 	}
 	
 	/**
 	 * @see #findBooksBySearch(ArrayList, int, int) with index = 0 and resultSize = 20.
 	 */
 	public static ArrayList<Book> findBooksBySearch(ArrayList<String> searchterms) {
-		if (searchterms == null) {
+		if (searchterms == null  || searchterms.size() == 0) {
+			return null;
+		}
+		int totalNulls = 0;
+		for(String s : searchterms) {
+			if(s.length() == 0) {
+				totalNulls++;
+			}
+		}
+		if(totalNulls == searchterms.size()) {
 			return null;
 		}
 		return BookApiConnection.searchBooks(searchterms);
@@ -61,7 +88,7 @@ public abstract class BookApi extends BookApiConnection{
 	 * @see #findBooksBySearch(ArrayList, int, int)
 	 */
 	public static ArrayList<Book> findBooksBySearch(String searchterms, int index, int resultSize) {
-		if (searchterms == null || index < 0 || resultSize < 1) {
+		if (searchterms == null || index < 0 || resultSize < 1  || searchterms.length() == 0) {
 			return null;
 		}
 		ArrayList<String> searchtermsList = new ArrayList<String>();
@@ -73,19 +100,19 @@ public abstract class BookApi extends BookApiConnection{
 	 * @see #findBooksBySearch(ArrayList, int, int) with resultSize = 20.
 	 */
 	public static ArrayList<Book> findBooksBySearch(String searchterms, int index) {
-		if (searchterms == null || index < 0) {
+		if (searchterms == null || index < 0  || searchterms.length() == 0) {
 			return null;
 		}
 		ArrayList<String> searchtermsList = new ArrayList<String>();
 		searchtermsList.add(searchterms);
-		return BookApiConnection.searchBooks(searchtermsList);
+		return BookApiConnection.searchBooks(searchtermsList, index);
 	}
 	
 	/**
 	 * @see #findBooksBySearch(ArrayList, int, int) with index = 0 and resultSize = 20.
 	 */
 	public static ArrayList<Book> findBooksBySearch(String searchterms) {
-		if (searchterms == null) {
+		if (searchterms == null || searchterms.length() == 0) {
 			return null;
 		}
 		ArrayList<String> searchtermsList = new ArrayList<String>();
@@ -100,7 +127,16 @@ public abstract class BookApi extends BookApiConnection{
 	 * @return The amount of books that were found.
 	 */
 	public static int getMaxResults(ArrayList<String> searchterms) {
-		if (searchterms == null) {
+		if (searchterms == null  || searchterms.size() == 0) {
+			return -1;
+		}
+		int totalNulls = 0;
+		for(String s : searchterms) {
+			if(s.length() == 0) {
+				totalNulls++;
+			}
+		}
+		if(totalNulls == searchterms.size()) {
 			return -1;
 		}
 		return BookApiConnection.getResultsSize(searchterms);
@@ -110,7 +146,7 @@ public abstract class BookApi extends BookApiConnection{
 	 * @see #maxResults(ArrayList)
 	 */
 	public static int getMaxResults(String searchterms) {
-		if (searchterms == null) {
+		if (searchterms == null  || searchterms.length() == 0) {
 			return -1;
 		}
 		ArrayList<String> searchtermsList = new ArrayList<String>();

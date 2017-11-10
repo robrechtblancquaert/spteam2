@@ -51,7 +51,7 @@ class BookApiConnection {
 	 * @param resultSize This sets the maximum size of the returned list.
 	 * @return A list of book objects, correlated with the search terms.
 	 */
-	static ArrayList<Book> searchBooks(ArrayList<String> searchterms, int index, int resultSize) {
+	protected static ArrayList<Book> searchBooks(ArrayList<String> searchterms, int index, int resultSize) {
 		BookApiConnection ac = new BookApiConnection();
 		ac.maxResults = resultSize;
 		ac.startIndex = index;
@@ -61,6 +61,9 @@ class BookApiConnection {
 		}
 		searchParameterValue = searchParameterValue.trim();
 		ArrayList<String> volumeList = ac.getVolumeList(searchParameterValue);
+		if(volumeList == null) {
+			return null;
+		}
 		ArrayList<Book> books = new ArrayList<Book>();
 		for(String s : volumeList) {
 			Book book = ac.formBookFromVolume(s);
@@ -72,14 +75,14 @@ class BookApiConnection {
 	/**
 	 * @see #searchBooks(ArrayList, int, int), with resultSize = 20.
 	 */
-	static ArrayList<Book> searchBooks(ArrayList<String> searchterms, int index) {
+	protected static ArrayList<Book> searchBooks(ArrayList<String> searchterms, int index) {
 		return searchBooks(searchterms, index, 20);
 	}
 	
 	/**
 	 * @see #searchBooks(ArrayList, int, int), with index = 0 and resultSize = 20.
 	 */
-	static ArrayList<Book> searchBooks(ArrayList<String> searchterms) {
+	protected static ArrayList<Book> searchBooks(ArrayList<String> searchterms) {
 		return searchBooks(searchterms, 0, 20);
 	}
 	
@@ -89,7 +92,7 @@ class BookApiConnection {
 	 * @param id  The id of the book you want to find.
 	 * @return A Book object with the given id, or null if no volume was found with given id.
 	 */
-	static Book getBookById(String id) {
+	protected static Book getBookById(String id) {
 		BookApiConnection ac = new BookApiConnection();
 		return ac.formBookFromVolume(ac.getVolumeById(id));
 	}
@@ -142,8 +145,15 @@ class BookApiConnection {
 					.build();
 			
 			ArrayList<String> partialResponse = null;
-			partialResponse = deconstructVolumeList(urlGetRequest(url.toString()));
+			String request = urlGetRequest(url.toString());
+			if(request == null) {
+				return null;
+			}
+			partialResponse = deconstructVolumeList(request);
 			if(partialResponse == null) {
+				if(volumeBodies.size() == 0) {
+					return null;
+				}
 				return volumeBodies;
 			}
 			volumeBodies.addAll(partialResponse);
@@ -159,7 +169,7 @@ class BookApiConnection {
 	 * @param searchterms  The searchterms you want to know the amount of results for.
 	 * @return The amount of results.
 	 */
-	static int getResultsSize(ArrayList<String> searchterms) {
+	protected static int getResultsSize(ArrayList<String> searchterms) {
 		String searchParameterValue = new String();
 		for(String s : searchterms) {
 			searchParameterValue += s.trim() + " ";
@@ -241,9 +251,13 @@ class BookApiConnection {
 		}
 		Book book = new Book(null);
 		
-		JSONObject jsonVolume = new JSONObject(volume);
-		book.setId(jsonVolume.getString("id"));
-		book.setTitle(jsonVolume.getJSONObject("volumeInfo").getString("title"));
+		try {
+			JSONObject jsonVolume = new JSONObject(volume);
+			book.setId(jsonVolume.getString("id"));
+			book.setTitle(jsonVolume.getJSONObject("volumeInfo").getString("title"));
+		} catch(JSONException e) {
+			return null;
+		}
 		return book;
 	}
 }
