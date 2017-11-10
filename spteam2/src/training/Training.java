@@ -1,4 +1,4 @@
-package Training;
+package training;
 
 public class Training {
 
@@ -62,12 +62,12 @@ public class Training {
 		
 
 		//om te zien of het werkt 
-		/*
+		
 		@Override
 		public String toString() {
 			return "Training [name=" + name + ", subject=" + subject + ", address=" + address + ", date=" + date + "]";
 		}
-
+		/*
 		public static void main(String[] args) {
 			Address javaA = new Address("Belgie","Ruisbroek","1601","Fabriekstraat",18);
 			Datum javaD = new Datum(8,11,17,"16:00:00");
@@ -75,5 +75,7 @@ public class Training {
 			
 			System.out.println(javaT.toString());
 		}
-	*/	
+	*/
+		
+		
 }

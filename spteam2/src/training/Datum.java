@@ -1,4 +1,4 @@
-package Training;
+package training;
 
 public class Datum {
 	private int day;
