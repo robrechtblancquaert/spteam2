@@ -1,11 +1,14 @@
 package login;
-public class LoginScreen extends HashedString  {
+
+
+
+public class LoginScreen  {
 	
 	String  password ;
 	HashedString st = new HashedString(password);
 	
 	
 	
-	public Role  login(String username,String password) {}
+	public void  login(String username,String password) {}
 
 }
