@@ -23,6 +23,8 @@ public class DbConnection {
 		
 		
 	}
+}
+//testing
 	/*public static void main(String[] ags) {
 		try {
 		/*
@@ -35,8 +37,7 @@ public class DbConnection {
 		return conn;
 		
 		} catch (ClassNotFoundException | SQLException ex) {
-			
-			Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null,ex);
+			System.out.println(e);
 		}
 		return null;
 		
@@ -59,4 +60,4 @@ public class DbConnection {
 		
 	}*/
 	
-	}
+	

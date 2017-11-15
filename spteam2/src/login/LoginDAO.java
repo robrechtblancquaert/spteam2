@@ -2,12 +2,12 @@ package login;
 
 import java.sql.*;
 
-public class LoginModel {
+public class LoginDAO {
 	
 	
 	
 	Connection connection;
-	public LoginModel() {
+	public LoginDAO() {
 		
 		connection = DbConnection.Connect();
 		
@@ -31,19 +31,19 @@ public class LoginModel {
 		
 	}
 	public boolean isLogin(String user , String pass) throws SQLException {
-		PreparedStatement preparedStatement = null;
-		ResultSet  resultSet = null;
+		PreparedStatement ps = null;
+		ResultSet  rs = null;
 		String query = "Select * from users WHERE username = ? AND  password = ?";
 	
 		try 
 		{
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, user);
-			preparedStatement.setString(2, pass);
+			ps = connection.prepareStatement(query);
+			ps.setString(1, user);
+			ps.setString(2, pass);
 			
 			
-			resultSet = preparedStatement.executeQuery();
-			if(resultSet.next()) {
+			rs = ps.executeQuery();
+			if(rs.next()) {
 				return true;
 				
 			}else {
@@ -56,8 +56,8 @@ public class LoginModel {
 			return false;
 		}
 		finally {
-			preparedStatement.close();
-			resultSet.close();
+			ps.close();
+			rs.close();
 		}
 	}
 }

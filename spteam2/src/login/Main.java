@@ -9,13 +9,13 @@ import javafx.scene.Scene;
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage logScreen) {
 		try {
 			Parent root  = FXMLLoader.load(getClass().getResource("/login/Login.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			Scene scn = new Scene(root);
+			scn.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			logScreen.setScene(scn);
+			logScreen.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

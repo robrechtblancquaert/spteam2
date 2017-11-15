@@ -9,43 +9,46 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class LoginController implements Initializable {
 	
-	 public LoginModel loginModel = new LoginModel();
-	 
-	 
+	 public LoginDAO loginModel = new LoginDAO();
 	   @FXML
-	   private Label isConnected;
+	   private TextField loginName;
 	   
 	   @FXML
-	   private TextField txtUsername;
-	   
+	   private TextField loginPass;
+	 
 	   @FXML
-	   private TextField txtPassword;
+	   private Label status;
+	   
+	
 	   
 	 @Override
 	 public void initialize(URL location, ResourceBundle resources) {
 	  // TODO Auto-generated method stub
 	  if (loginModel.isConnected()) {
-	   isConnected.setText("Connected");
+	   status.setText("Connected");
 	  } else {
 
-	   isConnected.setText("Not Connected");
+	   status.setText("Not Connected");
 	  }
 	 }
 	 public void Login (ActionEvent event){
 		 try {
-		 if(loginModel.isLogin(txtUsername.getText(), txtPassword.getText())) {
-			 isConnected.setText("username and password is correct");
+		 if(loginModel.isLogin(loginName.getText(), loginPass.getText())) {
+			 status.setText("username and password is correct");
+			 status.setTextFill(Color.web("#5ff442"));
 		   }
 		 else {
-			 isConnected.setText("username and password is incorrect");
-			 
+			 status.setText("username and password is incorrect");
+			 status.setTextFill(Color.web("#ff0c0c"));
 		 }
 		}
 		 catch(SQLException e) {
-			 isConnected.setText("username and password is incorrect");
+			 status.setText("username and password is incorrect");
+			 status.setTextFill(Color.web("#ff0c0c"));
 			 e.printStackTrace();
 			 
 		 }
