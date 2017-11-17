@@ -3,13 +3,31 @@ package books;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import database.DatabaseAccessObject;
+
+@Entity
+@Table(name = "BOOK")
 public class Book {
 	
+	@Id
+	@Column(name = "BookID")
 	private String id;
+	@Column(name = "Title")
 	private String title;
+	@Column(name = "Author")
+	private String autor = "NA";
+	@Column(name = "Description")
+	private String description = "NA";
+	@Column(name = "ISBN")
+	private String isbn = "NA";
 	
 	public String getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(String id) {
 		this.id = id;

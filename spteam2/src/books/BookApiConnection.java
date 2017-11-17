@@ -169,7 +169,7 @@ class BookApiConnection {
 	 * @param searchterms  The searchterms you want to know the amount of results for.
 	 * @return The amount of results.
 	 */
-	protected static int getResultsSize(ArrayList<String> searchterms) {
+	protected  static int getResultsSize(ArrayList<String> searchterms) {
 		String searchParameterValue = new String();
 		for(String s : searchterms) {
 			searchParameterValue += s.trim() + " ";
