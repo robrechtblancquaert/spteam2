@@ -10,6 +10,7 @@ public class TrainingOverviewWindow {
 	
 	public ArrayList<String> getTrainings() {
 		return trainings;
+		//lol 
 	}
 
 	public void setTrainings(ArrayList<String> trainings) {
