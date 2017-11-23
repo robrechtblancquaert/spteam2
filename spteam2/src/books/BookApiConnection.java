@@ -249,15 +249,30 @@ class BookApiConnection {
 		if(volume == null) {
 			return null;
 		}
-		Book book = new Book(null);
-		
+		Book book = new Book();
+		JSONObject jsonVolume = new JSONObject(volume);
 		try {
-			JSONObject jsonVolume = new JSONObject(volume);
 			book.setId(jsonVolume.getString("id"));
 			book.setTitle(jsonVolume.getJSONObject("volumeInfo").getString("title"));
-		} catch(JSONException e) {
-			return null;
-		}
+			book.setIsbn(jsonVolume.getJSONArray("industryIdentifiers").getJSONObject(0).getString("identifier"));
+		} catch(JSONException e) {}
+		try {
+			JSONArray jsonAuthors = jsonVolume.getJSONObject("volumeInfo").getJSONArray("authors");
+			String authors = "";
+			for(int i = 0; i < jsonAuthors.length(); i++) {
+				authors += jsonAuthors.getString(i);
+				if(i < jsonAuthors.length() -1) {
+					authors += ", ";
+				}
+			}
+			book.setAuthors(authors);
+		} catch(JSONException e) {}
+		try {
+			book.setDescription(jsonVolume.getString("description"));
+		} catch(JSONException e) {}
+		try {
+			book.setIsbn(jsonVolume.getJSONArray("industryIdentifiers").getJSONObject(0).getString("identifier"));
+		} catch(JSONException e) {}
 		return book;
 	}
 }

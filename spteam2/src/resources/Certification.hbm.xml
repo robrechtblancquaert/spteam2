@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "employee.Certification" table = "CERTIFICATION">
+      
+      <id name = "id" type = "int" column = "CertificationID">
+      	<generator class="native"/>
+      </id>
+     
+      <property name = "name" column = "CertificationName" type = "string"/>
+      <property name = "type" column = "CertificationType" type = "string"/>
+      <property name = "image" column = "Image" type = "text"/>
+      <property name = "date" column = "Date" type = "calendar_date"/>
+      <property name = "trainingId" column = "TrainingID" type = "int"/>
+   </class>
+</hibernate-mapping>
