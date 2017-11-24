@@ -70,7 +70,7 @@ public class Location {
 	}
 	
 	public static void main(String[] args0) {
-		String address = "Los Angeles 15th street";
+		String address = "Laarbeeklaan 119 Jette";
 		System.out.println(LocationApi.getJsonAddress(address).toString());
 		Location l = new Location();
 		l.address = address;

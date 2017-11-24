@@ -28,6 +28,10 @@ public class Dao<T extends DatabaseObject> {
 		}
 	}
 	
+	public String getClassName() {
+		return dbObject.getClass().getName();
+	}
+	
 	public void delete(T t) {
 		Session session = sessionFactory.openSession();
 		try {
