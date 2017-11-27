@@ -21,7 +21,7 @@ public class Person {
 		this.departement = new SimpleStringProperty(departement);
 		this.function = new SimpleStringProperty(function);
 		this.joinedDate = joinedDate;
-		photo = new Image("@../../../../../../Desktop/softproject/imageplaceholder.png");
+		//photo = new Image("@../../../../../../Desktop/softproject/imageplaceholder.png");
 	}
 	
 	
@@ -33,7 +33,7 @@ public class Person {
 		this.departement = new SimpleStringProperty(departement);
 		this.function = new SimpleStringProperty(function);
 		this.joinedDate = joinedDate;
-		this.photo = photo;
+		//this.photo = photo;
 	}
 	
 	//source Jaret Wright
