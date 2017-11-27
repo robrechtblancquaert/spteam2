@@ -17,7 +17,7 @@ import books.Book;
  * @param <T> A DatabaseObject type.
  */
 public class Dao<T extends DatabaseObject> {
-	private static SessionFactory sessionFactory = new Configuration().configure("/resources/hibernate.cfg.xml").buildSessionFactory();
+	private static SessionFactory sessionFactory = new Configuration().configure("/database/hibernate.cfg.xml").buildSessionFactory();
 	private T dbObject;
 	
 	public Dao(Class<T> dbClass) {
@@ -139,7 +139,7 @@ public class Dao<T extends DatabaseObject> {
 		Dao<Book> daoBook = new Dao<Book>(Book.class);
 		Book book = daoBook.getById("ONEBAAAAMAAJ");
 		System.out.println(book);
-		System.out.println(daoBook.selectObject("FROM books.Book WHERE id = \'ONEBAAAAMAAJ\'"));
+		System.out.println(daoBook.selectObject("FROM " + daoBook.getClassName() + " WHERE id = \'ONEBAAAAMAAJ\'"));
 		List<Object[]> select = Dao.selectColumns("SELECT id, title FROM books.Book");
 		System.out.println(select);
 		for(Object[] o : select) {
