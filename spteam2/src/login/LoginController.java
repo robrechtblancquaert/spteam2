@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 
 public class LoginController implements Initializable {
 	
-	 public LoginDAO log = new LoginDAO();
+	 public LoginDAO loginModel = new LoginDAO();
 	   @FXML
 	   private TextField loginName;
 	   
@@ -28,8 +28,8 @@ public class LoginController implements Initializable {
 	 @Override
 	 public void initialize(URL location, ResourceBundle resources) {
 	  // TODO Auto-generated method stub
-	  if (log.isConnected()) {
-	   status.setText("Connection Status ...");
+	  if (loginModel.isConnected()) {
+	   status.setText("Connected");
 	  } else {
 
 	   status.setText("Not Connected");
@@ -37,7 +37,7 @@ public class LoginController implements Initializable {
 	 }
 	 public void Login (ActionEvent event){
 		 try {
-		 if(log.isLogin(loginName.getText(), loginPass.getText())) {
+		 if(loginModel.isLogin(loginName.getText(), loginPass.getText())) {
 			 status.setText("username and password is correct");
 			 status.setTextFill(Color.web("#5ff442"));
 		   }
