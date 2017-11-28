@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #BEBEBE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
+   <children>
+      <TextField layoutX="39.0" layoutY="88.0" promptText="Password" style="-fx-background-color: #F5F5F5;" />
+      <TextField layoutX="39.0" layoutY="56.0" promptText="Username" style="-fx-background-color: #F5F5F5;" />
+      <Button layoutX="39.0" layoutY="135.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" style="-fx-border-width: 0; -fx-border-color: grey;" text="Login">
+         <effect>
+            <InnerShadow color="#0000007e" />
+         </effect></Button>
+      <Label layoutX="39.0" layoutY="21.0" text="Welcome" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
