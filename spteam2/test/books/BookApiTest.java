@@ -27,12 +27,13 @@ public class BookApiTest {
 	@Test
 	public void testFindBookBySearchIncorrectInput() {
 		assertNull(BookApi.findBooksBySearch(""));
+		
 	}
 	
 	@Test
 	public void testFindBookBySearchIncorrectInputIndex() {
 		assertNull(BookApi.findBooksBySearch("Random", -1));
-		assertNull(BookApi.findBooksBySearch("Random", 5000000));
+		assertNull(BookApi.findBooksBySearch("Random", Integer.MAX_VALUE));
 	}
 	
 	@Test

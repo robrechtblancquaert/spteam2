@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "training.Training" table = "TRAINING">
+      
+      <id name = "id" type = "int" column = "TrainingID">
+      	<generator class="native"/>
+      </id>
+     
+      <component name="location" class="maps.Location">
+      	 <property name = "address" column = "Location" type = "string"/>
+      </component>
+      
+      <set name = "participants" cascade="save-update" table="CERTIFICATIONLINK" lazy="false">
+         <key column = "TrainingID"/>
+         <many-to-many column = "EmployeeID" class="employee.Employee"/>
+      </set>
+      
+      <set name = "books" cascade="save-update" table="TRAINING_BOOK" lazy="false">
+         <key column = "TrainingID"/>
+         <many-to-many column = "BookID" class="books.Book"/>
+      </set>
+      
+      <set name = "surveys" cascade="save-update" lazy="false">
+         <key column = "TrainingID"/>
+         <one-to-many class="training.Survey"/>
+      </set>
+      
+      <property name = "name" column = "TrainingsName" type = "string"/>
+      <property name = "description" column = "Description" type = "string"/>
+      <property name = "date" column = "DateTime" type = "calendar"/>
+   </class>
+</hibernate-mapping>
