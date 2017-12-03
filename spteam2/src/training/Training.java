@@ -12,6 +12,7 @@ import database.Dao;
 import database.DatabaseObject;
 import employee.Certification;
 import employee.Employee;
+import employee.EncodeImage;
 import maps.Location;
 
 public class Training implements DatabaseObject{
@@ -100,7 +101,7 @@ public class Training implements DatabaseObject{
 			Set<Employee> participants = new HashSet<Employee>();
 			Employee e = new Employee(57, "Robrecht", "admin");
 			Set<Certification> certifications = new HashSet<Certification>();
-			certifications.add(new Certification("test", "testcertification", "image", calendar));
+			certifications.add(new Certification("test", "testcertification", EncodeImage.encode("C:\\Users\\Robrecht Blancquaert\\Documents\\SoftwareProject17-18\\project\\documents\\UML.png"), calendar));
 			e.setCertifications(certifications);
 			participants.add(e);
 			participants.add(new Employee(20187, "Scott", "user"));

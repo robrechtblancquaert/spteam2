@@ -9,12 +9,12 @@ public class Certification implements DatabaseObject{
 	private int id;
 	private String type;
 	private String name;
-	private String image;
+	private byte[] image;
 	private Calendar date;
 	private int trainingId;
 	
 	public Certification( ) {}
-	public Certification(String type, String name, String image, Calendar date) {
+	public Certification(String type, String name, byte[] image, Calendar date) {
 		super();
 		this.type = type;
 		this.name = name;
@@ -40,10 +40,10 @@ public class Certification implements DatabaseObject{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 	public Calendar getDate() {

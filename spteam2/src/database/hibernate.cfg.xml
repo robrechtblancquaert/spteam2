@@ -24,10 +24,10 @@
          xkpRRfJ
       </property>
       
-      <mapping resource = "resources/Book.hbm.xml"/>
-      <mapping resource = "resources/Employee.hbm.xml"/>
-      <mapping resource = "resources/Certification.hbm.xml"/>
-      <mapping resource = "resources/Survey.hbm.xml"/>
-      <mapping resource = "resources/Training.hbm.xml"/>
+      <mapping resource = "database/Book.hbm.xml"/>
+      <mapping resource = "database/Employee.hbm.xml"/>
+      <mapping resource = "database/Certification.hbm.xml"/>
+      <mapping resource = "database/Survey.hbm.xml"/>
+      <mapping resource = "database/Training.hbm.xml"/>
    </session-factory>
 </hibernate-configuration>
