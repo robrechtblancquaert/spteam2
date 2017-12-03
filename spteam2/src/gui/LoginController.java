@@ -1,37 +1,64 @@
 package gui;
 
+//https://stackoverflow.com/questions/43429492/how-to-pass-an-object-from-one-controller-to-another-with-javafx
+
+
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 
-
-public class LoginController {
-
-	//changes Scene to Main Gui
-	@FXML
-	public void changeScreenButtonPushed(ActionEvent event) throws IOException {
-		Parent tableViewParent = FXMLLoader.load(getClass().getResource("\\MainGUIRemake.fxml"));
-		Scene tableViewScene = new Scene(tableViewParent);
-		tableViewParent.getStylesheets().add(getClass().getResource("Maincss.css").toExternalForm());
-		//get stage information
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setTitle("Training Requests");
-		
-		window.setScene(tableViewScene);
-		window.show();
-		
-		
-		
-		
-	}
+public class LogInController extends HRApplicationMainController{	
 	
-	
+    @FXML
+    private TextField UsernameTextfield;
+
+    @FXML
+    private TextField PasswordTextfield;
+
+    @FXML
+    private Label UsernameLabel;
+
+    @FXML
+    private Button LogInButton;
+
+    @FXML
+    private Label PasswordLabel;
+     
+   //if text in textfield -> glow
+    @FXML
+    private void GlowUsername() throws IOException{
+    	UsernameLabel.setEffect(UserNameGlowON);
+    }
+    
+    @FXML
+    private void GlowPassword() throws IOException{
+    	PasswordLabel.setEffect(PasswordGlowON);
+    }
+    
+    
+    @FXML
+    private void gotoDashBoardButton() throws IOException {
+    	MainLoader.LogInButtonClicked();    	
+    }
+    
+    @FXML
+    static void LoginButtonCLicked(ActionEvent event) throws IOException{
+    	MainLoader.showDashBoard();
+    	//HRApplicationMainController.ChangeLogout(); Static gezever
+    	   	
+    }
+    
+    
+    
+   
+    
+    
+
+    
 
 }
