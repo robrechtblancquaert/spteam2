@@ -22,5 +22,5 @@ Auth::routes();
 
 Route::resource('trainings','TrainingsController');
 Auth::routes();
-
-Route::get('/dashboard', 'DashBoardController@index');
+Route::get('/home','HomeController@index');
+Route::get('/general', 'GeneralController@index');

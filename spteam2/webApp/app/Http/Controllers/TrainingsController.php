@@ -41,6 +41,7 @@ class TrainingsController extends Controller
             'Description' => 'required',
             'Location' => 'required',
             'DateTime' => 'required',
+            
        ]);
 
        //Create new Training
@@ -50,7 +51,7 @@ class TrainingsController extends Controller
        $training->Description = $request->input('Description');
        $training->Location = $request->input('Location');
        $training->DateTime = $request->input('DateTime');
-      // $training->user_id = auth()->user()->id;
+       $training->user_id = auth()->user()->id;
        $training->save();
 
        return redirect('/trainings')->with('success', 'Training Created');

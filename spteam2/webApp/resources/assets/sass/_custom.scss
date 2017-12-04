@@ -5,9 +5,10 @@ body{
 
 .card {
     float:left;
-    margin: 40px;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     background-color: rgb(185, 185, 185);
+    overflow: hidden;
     
 }
 .card-text {
@@ -17,3 +18,92 @@ body{
     
         
     }
+
+#btnTraining {
+    width: 100%;
+    background-color : green;
+
+}
+#titleTraining{
+    width: 100%;
+}
+#jumbTronLogin{
+    color: black;
+    background-color: rgb(95, 95, 93);
+}
+
+#colorJumb{
+    color: black;
+}
+
+#jumbotron {
+    width: 100%;
+    height: 100%;
+}
+#map {
+    height: 400px;
+    width: 100%;
+   }
+.generalBoardTrainingName{
+    color:black;
+}
+
+
+#panel-general{
+
+    color:white;
+}
+#btnColor{
+    background-color: rgb(21, 133, 207);
+    color: rgb(243, 243, 243);
+}
+#formColor{
+    color:black;
+}
+#containerLogin{
+    height: 50%;
+}
+
+#outerLoginPane {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#middleLoginPane {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#innerLoginPane {
+    margin-left: auto;
+    margin-right: auto; 
+    
+}
+#loginPanelColor{
+    color:white;
+}
+#buttonLoginColor{
+background-color: black;
+border-color: black;
+
+
+}
+#cancelBtnShowTraining{
+    float: right;
+}
+#navbarColor{
+    color: white;
+}
+.navbar-default{
+    border-color:black;
+    border-radius: 0px;
+}
+#homeMenu{
+    width: 50%;
+    height:25%;
+}
+#colorHomeMen{
+    color:white;
+}

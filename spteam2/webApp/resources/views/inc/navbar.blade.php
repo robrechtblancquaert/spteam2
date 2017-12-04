@@ -14,7 +14,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="/home" id ="navbarColor">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -25,13 +25,12 @@
                         &nbsp;
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li > <a href ="/">Home</a>
-                        <li > <a href ="/about">About</a>
-                        <li > <a href ="/services">services</a> -->
+                        <li > <a href ="/home" id ="navbarColor">Home</a>
+                        
                       
-                        <li > <a href ="/trainings">Trainings</a>
-                        <li > <a href ="/RequestTrainings">Request Training</a>
-                        <li > <a href ="/RequestTrainings">Surveys</a>
+                        <li > <a href ="/trainings" id ="navbarColor">Trainings</a>
+                        <!-- <li > <a href ="/RequestTrainings">Request Training</a> -->
+                        <li > <a href ="/RequestTrainings" id ="navbarColor">Surveys</a>
                      </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -41,14 +40,14 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             
-                            <li><a href="/trainings/create">Add Training</a></li>
+                            <li><a href="/trainings/create" id ="navbarColor">Add Training</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id ="navbarColor">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="/dashboard">Dashboard</a></li>
+                                    <li><a href="/general">General</a></li>
                                     <li><a href="/settings">Settings</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"

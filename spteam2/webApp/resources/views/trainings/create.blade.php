@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('content');
-        <h1>Create Training</h1>
+@section('content')
+        <h1>Add A Training</h1>
         {!! Form::open(['action' => 'TrainingsController@store','method' => 'POST']) !!}
             <div class ="form-group">
                 {{Form::label('Trainingsname','Training Name')}}
@@ -15,6 +15,8 @@
                 {{Form::label('Location','Taking place at (address)')}}
                 {{Form::text('Location','',['class' => 'form-control','placeholder' =>'Taking place at (address)'])}}
             </div>
+
+
         <div class ="form-group">
                 {{Form::label('DateTime','When')}}
                 {{Form::date('DateTime', \Carbon\Carbon::now())}}

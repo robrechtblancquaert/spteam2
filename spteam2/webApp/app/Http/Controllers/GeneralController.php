@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
-class HomeController extends Controller
+class GeneralController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,12 +18,14 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application general.
+     * Show the application General.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home.index');
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        return view('general')->with('trainings',$user->trainings);
     }
 }
