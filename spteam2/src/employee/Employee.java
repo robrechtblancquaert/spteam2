@@ -1,6 +1,7 @@
 package employee;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,15 @@ import database.DatabaseObject;
 public class Employee implements DatabaseObject{
 	private int id;
 	private String name;
+	private String birthDate;
 	private String role;
+	private String hiredate;
+	private String address;
+	private String city;
+	private String postcode;
+	private String country;
+	private String phoneNumber;
+	
 	private Set<Certification> certifications = new HashSet<Certification>();
 	
 	public Employee() {}
@@ -45,6 +54,50 @@ public class Employee implements DatabaseObject{
 		this.certifications = certifications;
 	}
 	
+	public String getBirthDate() {
+		return birthDate;
+	}
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+	public String getHiredate() {
+		return hiredate;
+	}
+	public void setHiredate(String hiredate) {
+		this.hiredate = hiredate;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -66,11 +119,13 @@ public class Employee implements DatabaseObject{
 		return true;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", role=" + role + ", certifications=" + certifications + "]";
+		return "Employee [id= " + id + ", name= " + name + ", birthDate= " + birthDate + ", role= " + role + ", hiredate= "
+				+ hiredate + ", address= " + address + ", city= " + city + ", postcode= " + postcode + ", country= "
+				+ country + ", phoneNumber= " + phoneNumber + ", certifications= " + certifications + "]";
 	}
-	
 	@Override
 	public Serializable getSId() {
 		return getId();
