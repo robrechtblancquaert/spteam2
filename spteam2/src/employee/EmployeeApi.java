@@ -28,7 +28,15 @@ public abstract class EmployeeApi {
 			Employee e = new Employee();
 			e.setId(values.getJSONObject(i).getInt("EmployeeID"));
 			e.setName(values.getJSONObject(i).getString("FirstName") + " " + values.getJSONObject(i).getString("LastName"));
+			e.setBirthDate(values.getJSONObject(i).getString("BirthDate"));
 			e.setRole(values.getJSONObject(i).getString("Title"));
+			e.setHiredate(values.getJSONObject(i).getString("HireDate"));
+			e.setAddress(values.getJSONObject(i).getString("Address"));
+			e.setCity(values.getJSONObject(i).getString("City"));
+			e.setPostcode(values.getJSONObject(i).getString("PostalCode"));
+			e.setCountry(values.getJSONObject(i).getString("Country"));
+			e.setPhoneNumber(values.getJSONObject(i).getString("HomePhone"));
+			
 			employees.add(e);
 		}
 		return employees;

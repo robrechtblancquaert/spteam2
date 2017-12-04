@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="lib/okhttp/okhttp-3.9.0.jar" sourcepath="lib/okhttp/src/okhttp-3.9.0-sources.jar"/>
@@ -19,5 +19,12 @@
 	<classpathentry kind="lib" path="lib/hibernate/mysql-connector-java-5.1.44-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
+	<classpathentry kind="lib" path="lib/controlsfx-8.40.11.jar"/>
+	<classpathentry kind="lib" path="lib/javax.mail.jar"/>
+	<classpathentry kind="lib" path="lib/jfoenix (1).jar"/>
+	<classpathentry kind="lib" path="lib/jfxtras-labs-samples-8.0-r6-SNAPSHOT-all (1).jar"/>
+	<classpathentry kind="lib" path="lib/jidefx-common-0.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/Medusa-7.9.jar"/>
+	<classpathentry kind="lib" path="lib/tilesfx-1.5.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
