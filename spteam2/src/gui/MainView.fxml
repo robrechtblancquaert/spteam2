@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
+
+<BorderPane maxHeight="1080.0" maxWidth="1920.0" minHeight="480.0" minWidth="720.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
+   <top>
+      <AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #2f3234;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane maxHeight="50.0" prefHeight="40.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane fx:id="optionsPane" layoutX="1080.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="0">
+                     <children>
+                        <JFXButton fx:id="logoutButton" buttonType="RAISED" layoutX="165.0" layoutY="9.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#logout" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/account-logout-8x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="logoutButton1" buttonType="RAISED" layoutX="136.0" layoutY="8.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/wrench-8x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <JFXButton fx:id="dashboardButton" layoutX="200.0" onAction="#showDashboard" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" text="Dashboard" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Light" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="statisticsButton" layoutX="400.0" onAction="#showStatistics" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" text="Statistics" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Light" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <CustomTextField fx:id="SearchField" layoutX="620.0" layoutY="8.0" prefHeight="20.0" prefWidth="200.0" promptText="Search...">
+                  </CustomTextField>
+                  <Label layoutX="56.0" layoutY="4.0" style="-fx-border-color: white; -fx-border-radius: 3 3 3 3;" text="SPTeam2" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Black Italic" size="21.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane fx:id="leftPane" maxWidth="210.0" prefHeight="1040.0" prefWidth="200.0" style="-fx-background-color: #606669;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="topLeftMenu" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0" />
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EFEFEF;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXSpinner fx:id="loadingSpinner" layoutX="525.0" layoutY="329.0" radius="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <HBox fx:id="homePane" alignment="CENTER" layoutX="-200.0" layoutY="290.0" prefHeight="680.0" prefWidth="1280.0" style="-fx-background-color: #EFEFEF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="680.0" prefWidth="258.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="120.0" fitWidth="101.0" layoutX="79.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/home-8x.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="-89.0" layoutY="100.0" text="Welcome to the Training Management Application!">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

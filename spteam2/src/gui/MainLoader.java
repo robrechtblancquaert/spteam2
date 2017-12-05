@@ -2,61 +2,64 @@ package gui;
 
 import java.io.IOException;
 
-import javafx.animation.FadeTransition;
 import javafx.application.Application;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
-import javafx.scene.effect.Bloom;
-import javafx.scene.effect.Glow;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import javafx.stage.StageStyle;
 public class MainLoader extends Application{
 	
-	//https://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
-	
-	
+	private static MainLoader main;
 	private Stage primaryStage;
-	private static BorderPane mainLayout; //static? werkt niet zonder
+	private static AnchorPane login;
 	
+	public static MainLoader getMain() {
+		return main;
+	}
 	
 	@Override
 	public void start (Stage primaryStage) throws IOException{
+		main = this;
 		this.primaryStage= primaryStage;
-		this.primaryStage.setTitle("HR App");
-		showMainView();
+		this.primaryStage.setTitle("Login");
+		showLogin();
 	}
 	
-	private void showMainView() throws IOException {
+	private void showLogin(){
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MainLoader.class.getResource("HRApplicationGUI.fxml"));
-		mainLayout = loader.load();
-		Scene scene = new Scene (mainLayout);
+		loader.setLocation(MainLoader.class.getResource("LoginView.fxml"));
+		try {
+			login = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Scene scene = new Scene (login);
 		primaryStage.setScene(scene);
-		FadeTransition ft = new FadeTransition(Duration.millis(2000), mainLayout);
-		ft.setFromValue(0.0);
-		ft.setToValue(1);
-		ft.play();
+		primaryStage.setResizable(false);
 		primaryStage.show();	
 		
 	}
-
+	
+	public void showDashboard() {
+		this.primaryStage.setTitle("Training Management");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainLoader.class.getResource("MainView.fxml"));
+		BorderPane dashboard = null;
+		try {
+			dashboard = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Scene scene = new Scene (dashboard);
+		primaryStage.setScene(scene);
+		primaryStage.show();	
+		
+	}
+	
 	public static void main (String[] args) {
 		launch(args);
 	}
 }
-
-
-
-
-
-/*
- * Transition Code - source - https://stackoverflow.com/questions/24978278/fade-in-fade-out-a-screen-in-javafx
- * 
-FadeTransition ft = new FadeTransition(Duration.millis(1000), mainLayout);
-ft.setFromValue(0.5);
-ft.setToValue(1);
-ft.play();
-*/

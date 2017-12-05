@@ -1,22 +1,33 @@
 package gui;
 
-import java.util.HashSet;
+import java.io.IOException;
 
-public class MainController {
-	private static MainController mc = null;
-	private MainController() {}
-	public static MainController get() {
-		if(mc == null) mc = new MainController();
-		return mc;
-	}
+import org.controlsfx.glyphfont.FontAwesome;
+import org.controlsfx.glyphfont.Glyph;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSpinner;
+
+import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
+
+
+public class HRApplicationMainController extends MainLoader{
+	@FXML
+    private JFXButton logoutButton;
 	
-	private HashSet<Controller> controllers = new HashSet<Controller>();
+	@FXML
+	private Pane optionsPane;
 	
-	public void addController(Controller c) {
-		controllers.add(c);
-		c.start();
-	}
-	public void removeController(Controller c) {
-		controllers.remove(c);
-	}
+	@FXML
+	private JFXSpinner loadingSpinner;
+	
+    public void initialize() throws IOException {
+    	
+    }
+    
+    public void stopSpinner() {
+    	loadingSpinner.setVisible(false);
+    }
 }
+
