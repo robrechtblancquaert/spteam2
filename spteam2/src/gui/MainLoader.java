@@ -27,7 +27,7 @@ public class MainLoader extends Application{
 		this.primaryStage= primaryStage;
 		this.primaryStage.setTitle("HR App");
 		showMainView();
-		showLogin();
+		showDashBoard();
 	}
 	
 	private void showMainView() throws IOException {
@@ -44,7 +44,7 @@ public class MainLoader extends Application{
 		primaryStage.show();	
 		
 	}
-	
+	/*
 
 	static void showLogIn() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
@@ -52,6 +52,7 @@ public class MainLoader extends Application{
 		BorderPane LoginScreen = loader.load();		
 		mainLayout.setCenter(LoginScreen);		
 	}
+	*/
 	
 	
 	static void showDashBoard() throws IOException {
@@ -62,6 +63,7 @@ public class MainLoader extends Application{
 	}	
 	
 	
+	
     static void showCertificate () throws IOException {
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(MainLoader.class.getResource("CertificateScreen.fxml"));    	
@@ -69,12 +71,28 @@ public class MainLoader extends Application{
     	mainLayout.setCenter(Certificate);
     }
     
+	
     static void showTraining() throws IOException {
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(MainLoader.class.getResource("TrainingScreen.fxml"));    	
-    	BorderPane TrainingScreen = loader.load();
+    	BorderPane TrainingScreen = loader.load();    	
     	mainLayout.setCenter(TrainingScreen);
+    	
     }
+    static void showLeftsideTraining() throws IOException{
+    	FXMLLoader loaderleft = new FXMLLoader();
+    	loaderleft.setLocation(MainLoader.class.getResource("LeftSideTrainingScreen.fxml"));
+    	BorderPane LeftSide = loaderleft.load(); 
+    	mainLayout.setLeft(LeftSide);
+    }
+    
+    static void showLeftSideSettings() throws IOException{
+    	FXMLLoader loaderleft = new FXMLLoader();
+    	loaderleft.setLocation(MainLoader.class.getResource("LeftSideSettingsScreen.fxml"));
+    	BorderPane LeftSideSettings = loaderleft.load(); 
+    	mainLayout.setLeft(LeftSideSettings);
+    }
+    
     
     static void showCancelations() throws IOException {
     	FXMLLoader loader = new FXMLLoader();
@@ -82,15 +100,51 @@ public class MainLoader extends Application{
     	BorderPane CancelScreen = loader.load();
     	mainLayout.setCenter(CancelScreen);
     }       
+   
     
-    static void showSettings() throws IOException{
+    static void ShowApplicationSettings() throws IOException{
     	FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(MainLoader.class.getResource("SettingsScreen.fxml"));   	
+    	loader.setLocation(MainLoader.class.getResource("ApplicationSettingsScreen.fxml"));   	
     	BorderPane SettingsScreen = loader.load();    	
     	mainLayout.setCenter(SettingsScreen);
     }
     
+    static void ShowUserSettings() throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(MainLoader.class.getResource("UserSettingsScreen.fxml"));   	
+    	BorderPane SettingsScreen = loader.load();    	
+    	mainLayout.setCenter(SettingsScreen);
+    }
     
+    static void ShowTrainingOverview()throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(MainLoader.class.getResource("TrainingOverviewScreen.fxml"));   	
+    	BorderPane TrainingOverview = loader.load();    	
+    	mainLayout.setCenter(TrainingOverview);
+    }
+    
+    static void ShowStatistics1Screen() throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(MainLoader.class.getResource("Statistics1Screen.fxml"));   	
+    	BorderPane StatisticsScreen = loader.load();    	
+    	mainLayout.setCenter(StatisticsScreen);
+    }
+    
+    static void ShowStatistics2Screen() throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(MainLoader.class.getResource("Statistics2Screen.fxml"));   	
+    	BorderPane StatisticsScreen = loader.load();    	
+    	mainLayout.setCenter(StatisticsScreen);
+    }
+    
+    static void ShowLeftSideStatisticsScreen() throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(MainLoader.class.getResource("LeftSideStatistics.fxml"));   	
+    	BorderPane StatisticsScreen = loader.load();    	
+    	mainLayout.setLeft(StatisticsScreen);
+    }
+    
+    /*
     static void showLogin() throws IOException{
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(MainLoader.class.getResource("LoginGUI.fxml"));
@@ -99,18 +153,23 @@ public class MainLoader extends Application{
     	HRApplicationMainController hrapplicationmaincontroller = loader.getController();
     	hrapplicationmaincontroller.changeLogoutButtonToLogOut("");
     	*/
-    	//LogInController logincontroller = loader.getController();    	
+    	//LogInController logincontroller = loader.getController();  
+    	/*
     	BorderPane LoginScreen = loader.load();
     	mainLayout.setCenter(LoginScreen);
+    	
     }
     
+    */
+    
+    /*
     static void LogInButtonClicked() throws IOException{
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(MainLoader.class.getResource("DashBoardScreen.fxml"));
     	BorderPane DasHBoardScreen = loader.load();
     	mainLayout.setCenter(DasHBoardScreen);
     }
-    
+    */
     
     
 	
@@ -119,35 +178,12 @@ public class MainLoader extends Application{
 	}
 	
 	//source for bloom https://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/Bloom.html    
-    public Bloom DashBoardBloomON = new Bloom(0.0);  
-    public Bloom CertificateBloomON = new Bloom(0.0); 
-    public Bloom SettingsBloomON = new Bloom(0.0); 
-    public Bloom TrainingBloomON = new Bloom(0.0); 
-    public Bloom CancelationsBloomON = new Bloom(0.0);
-    public Bloom LogoutBloomON = new Bloom(0.0);
+    public Bloom BloomOFF = new Bloom(1.0);
+    public Bloom BloomON = new Bloom (0.0);
     
-    public Bloom DashBoardBloomOFF = new Bloom(1.0);
-    public Bloom CertificateBloomOFF = new Bloom(1.0);
-    public Bloom SettingsBloomOFF = new Bloom(1.0);    
-    public Bloom CancelationsBloomOFF = new Bloom(1.0);    
-    public Bloom TrainingBloomOFF = new Bloom(1.0);
-    public Bloom LogoutBloomOFF = new Bloom(1.0);
-    
-    
-    public Glow UserNameGlowON = new Glow(1.0);
-    public Glow UserNameGlowOFF = new Glow(0.0);    
-    public Glow PasswordGlowON = new Glow (1.0);
-    public Glow PasswordGlowOFF = new Glow (0.0);
-    
-    public Glow DigitalGlowON = new Glow(1.0);
-    public Glow DigitalGlowOFF = new Glow(0.0);
-    
-    public Glow ClockGlowON = new Glow (1.0);
-    public Glow ClockGlowOFF = new Glow (0.0);
-    
-    
-	
-	
+    public Glow GlowON = new Glow (1.0);
+    public Glow GlowOFF = new Glow (0.0);
+
 }
 
 

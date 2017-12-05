@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="665.0" maxWidth="130.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="130.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LeftSideStatisticsController">
+   <bottom>
+      <Pane maxHeight="0.0" maxWidth="0.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <Pane maxHeight="0.0" maxWidth="0.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <Pane maxHeight="0.0" maxWidth="0.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <Pane maxHeight="0.0" maxWidth="0.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <AnchorPane maxHeight="665.0" prefHeight="665.0" prefWidth="130.0" style="-fx-background-color: #404040;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="gotostats1Button" layoutX="39.0" layoutY="82.0" mnemonicParsing="false" onAction="#showgotostats1" text="Stats1" />
+            <Button fx:id="gotoStats2Button" layoutX="39.0" layoutY="143.0" mnemonicParsing="false" onAction="#showgotostats2" text="Stats2" />
+         </children></AnchorPane>
+   </left>
+</BorderPane>

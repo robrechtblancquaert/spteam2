@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+   <session-factory>
+   
+      <property name = "hibernate.dialect">
+         org.hibernate.dialect.MySQLDialect
+      </property>
+      
+      <property name = "hibernate.connection.driver_class">
+         com.mysql.jdbc.Driver
+      </property>
+       
+      <property name = "hibernate.connection.url">
+         jdbc:mysql://dt5.ehb.be/SP2Team2
+      </property>
+      
+      <property name = "hibernate.connection.username">
+         SP2Team2
+      </property>
+      
+      <property name = "hibernate.connection.password">
+         xkpRRfJ
+      </property>
+      
+      <mapping resource = "database/Book.hbm.xml"/>
+      <mapping resource = "database/Employee.hbm.xml"/>
+      <mapping resource = "database/Certification.hbm.xml"/>
+      <mapping resource = "database/Survey.hbm.xml"/>
+      <mapping resource = "database/Training.hbm.xml"/>
+   </session-factory>
+</hibernate-configuration>

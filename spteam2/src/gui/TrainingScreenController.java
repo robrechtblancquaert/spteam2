@@ -1,4 +1,9 @@
 package gui;
+/*
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+*/
 
 //import java.io.IOException;
 /*
@@ -9,42 +14,34 @@ import javax.mail.internet.*;
 
 //import javafx.event.ActionEvent;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;  
 
 public class TrainingScreenController extends  MainLoader{
-	
-	@FXML
-    private TextField SubjectMail;
+/*
+    @FXML
+    private Button TrainingRequests;
 
     @FXML
-    private Button ManagerpresetButton;
+    private Button CertificateRequestsButton;
 
     @FXML
-    private Button TraineePresetButton;
+    private Button ListofTrainingsButton;
+
 
     @FXML
-    private TextArea MessageMail;
+    void showTrainingRequests(ActionEvent event) {
+
+    }
 
     @FXML
-    private TextField MailFrom;
+    void showCertificateRequests(ActionEvent event) {
+
+    }
 
     @FXML
-    private TableView<?> TrainingRequestTable;
+    void showListofTraining(ActionEvent event) {
 
-    @FXML
-    private Button SendMailButton;
-
-    @FXML
-    private TextField MailTo;
-    
-    //Sendmail();
-	
-	
-	
+    }
+*/
 	
 }
 
