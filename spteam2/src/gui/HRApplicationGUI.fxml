@@ -1,145 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.*?>
-<?import org.controlsfx.glyphfont.*?>
-<?import org.controlsfx.control.*?>
-<?import jfxtras.labs.icalendaragenda.internal.scene.control.skin.agenda.base24hour.*?>
-<?import jfxtras.labs.scene.control.*?>
-<?import javafx.scene.text.*?>
-<?import org.controlsfx.control.textfield.*?>
-<?import javafx.scene.paint.*?>
-<?import eu.hansolo.medusa.*?>
-<?import jfxtras.labs.scene.control.radialmenu.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import jfxtras.scene.control.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HRApplicationMainController">
-   <fx:include fx:id="Login" source="LoginGUI.fxml"/>
+<BorderPane maxHeight="1080.0" maxWidth="1920.0" minHeight="480.0" minWidth="720.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HRApplicationMainController">
    <top>
-      <AnchorPane maxHeight="50.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="70.0" prefHeight="40.0" prefWidth="1000.0" style="-fx-background-color: #2f3234;" BorderPane.alignment="CENTER">
          <children>
-            <Pane maxHeight="50.0" prefHeight="50.0" prefWidth="900.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane maxHeight="50.0" prefHeight="40.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button id="DashBoardButton" fx:id="DashBoardButton" layoutX="130.0" layoutY="5.0" mnemonicParsing="false" onAction="#gotoDashBoardButton" style="-fx-background-color: transparent;" text="DashBoard" textFill="WHITE">
+                  <Pane fx:id="optionsPane" layoutX="1080.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="0">
+                     <children>
+                        <JFXButton fx:id="logoutButton" buttonType="RAISED" layoutX="165.0" layoutY="9.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/account-logout-8x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="logoutButton1" buttonType="RAISED" layoutX="136.0" layoutY="8.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/wrench-8x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <JFXButton layoutX="200.0" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" text="Dashboard" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="Palatino Linotype" size="20.0" />
+                        <Font name="Calibri Light" size="18.0" />
                      </font>
-                     <effect>
-                        <Bloom threshold="1.0" />
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <ImageView blendMode="OVERLAY" disable="true" fitHeight="50.0" fitWidth="1000.0">
-                     <image>
-                        <Image url="@../../../../../../Desktop/SoftwProjectImages/topimage.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="gotoTrainingButton" layoutX="250.0" layoutY="5.0" mnemonicParsing="false" onAction="#gotoTraining" style="-fx-background-color: transparent;" text="Training Requests" textFill="WHITE">
-                     <effect>
-                        <Bloom threshold="1.0" />
-                     </effect>
+                  </JFXButton>
+                  <JFXButton layoutX="400.0" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" text="Statistics" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="Palatino Linotype" size="20.0" />
+                        <Font name="Calibri Light" size="18.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="certificateButton" layoutX="430.0" layoutY="5.0" mnemonicParsing="false" onAction="#gotocertificate" style="-fx-background-color: transparent;" text="Certificate Request" textFill="WHITE">
-                     <effect>
-                        <Bloom threshold="1.0" />
-                     </effect>
-                     <font>
-                        <Font name="Palatino Linotype" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <ImageView fitHeight="42.0" fitWidth="124.0" layoutX="7.0" layoutY="5.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../Desktop/SoftwProjectImages/companylogo.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="SettingsButton" layoutX="750.0" layoutY="5.0" mnemonicParsing="false" onAction="#gotoSettings" style="-fx-background-color: transparent;" text="Settings" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <Bloom threshold="1.0" />
-                     </effect>
-                     <font>
-                        <Font name="Palatino Linotype" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="CancelRequestButton" layoutX="620.0" layoutY="5.0" mnemonicParsing="false" onAction="#gotoCancelations" style="-fx-background-color: transparent;" text="Annulations" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <Bloom threshold="1.0" />
-                     </effect>
-                     <font>
-                        <Font name="Palatino Linotype" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="LogoutButton" layoutX="901.0" layoutY="3.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: transparent;" text="Log out" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <Bloom threshold="1.0" />
-                     </effect>
-                     <font>
-                        <Font name="Palatino Linotype" size="20.0" />
-                     </font>
-                  </Button>
+                  </JFXButton>
+                  <CustomTextField fx:id="SearchField" layoutX="620.0" layoutY="8.0" prefHeight="20.0" prefWidth="200.0" promptText="Search...">
+                  </CustomTextField>
                </children></Pane>
          </children>
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane maxWidth="130.0" prefHeight="600.0" prefWidth="156.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView disable="true" fitHeight="650.0" fitWidth="130.0">
-               <image>
-                  <Image url="@../../../../../../Desktop/SoftwProjectImages/leftpart.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="15.0" layoutY="14.0">
-               <image>
-                  <Image url="@../../../../../../Desktop/SoftwProjectImages/profilepicplaceholder.png" />
-               </image>
-               <effect>
-                  <DropShadow color="#ffffff71" height="50.0" radius="24.5" width="50.0" />
-               </effect>
-            </ImageView>
-            <Label layoutX="14.0" layoutY="122.0" text="Dennis" textFill="WHITE" />
-            <Label layoutX="15.0" layoutY="139.0" text="Van Malder" textFill="WHITE" />
-            <Label fx:id="ActionLabel" layoutX="15.0" layoutY="603.0" text="Action" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-            <Label fx:id="TimeLabelLastAction" layoutX="14.0" layoutY="628.0" text="Time" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="628.0" />
-         </children>
-      </AnchorPane>
+      <AnchorPane maxWidth="216.0" prefHeight="1040.0" prefWidth="200.0" style="-fx-background-color: #606669;" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView disable="true" fitHeight="650.0" fitWidth="870.0" opacity="0.95">
-               <image>
-                  <Image url="@../../../../../../Desktop/SoftwProjectImages/middlepart.png" />
-               </image>
-               <effect>
-                  <InnerShadow choke="0.36" color="#0000008d" height="255.0" radius="127.0" width="255.0" />
-               </effect>
-            </ImageView>
-         </children>
-      </AnchorPane>
+      <JFXSpinner fx:id="loadingSpinner" radius="8.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
