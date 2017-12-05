@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class LoginController {

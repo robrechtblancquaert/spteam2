@@ -21,7 +21,7 @@
                <children>
                   <Pane fx:id="optionsPane" layoutX="1080.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="0">
                      <children>
-                        <JFXButton fx:id="logoutButton" buttonType="RAISED" layoutX="165.0" layoutY="9.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#logout" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
+                        <JFXButton fx:id="logoutButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="165.0" layoutY="9.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#logout" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -30,7 +30,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="logoutButton1" buttonType="RAISED" layoutX="136.0" layoutY="8.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
+                        <JFXButton fx:id="logoutButton1" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="136.0" layoutY="8.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Button" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
