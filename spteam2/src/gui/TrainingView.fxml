@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,39 +9,66 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.textfield.CustomTextField?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EFEFEF;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TrainingController">
+<AnchorPane prefHeight="90.0" prefWidth="1080.0" style="-fx-background-color: #EFEFEF; -fx-border-radius: 5; -fx-border-color: black; -fx-background-radius: 5; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TrainingController">
    <children>
-      <VBox layoutX="223.0" layoutY="94.0" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: grey; -fx-border-radius: 5 5 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" style="-fx-border-color: Black; -fx-border-radius: 10;" text="More" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/menu-8x.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0">
+            <VBox prefHeight="75.0" prefWidth="400.0">
                <children>
-                  <Label text="Name:">
-                     <HBox.margin>
-                        <Insets left="20.0" right="35.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <CustomTextField prefHeight="25.0" prefWidth="415.0" />
-                  <JFXButton contentDisplay="RIGHT" ripplerFill="BLACK" text="Options">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Images/menu-8x.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
+                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Name:">
+                           <HBox.margin>
+                              <Insets left="20.0" right="13.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <CustomTextField editable="false" prefHeight="25.0" prefWidth="302.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="573.0">
+                     <children>
+                        <Label text="Date:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <CustomTextField editable="false" prefHeight="25.0" prefWidth="70.0" />
+                     </children>
+                  </HBox>
                </children>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="200.0">
+            </VBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="596.0">
                <children>
                   <Label text="Description:">
                      <font>
@@ -51,61 +78,10 @@
                         <Insets left="20.0" right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <CustomTextField prefHeight="86.0" prefWidth="500.0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="598.0">
-               <children>
-                  <Label text="Location:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="20.0" right="21.0" />
-                     </HBox.margin>
-                  </Label>
-                  <CustomTextField prefHeight="25.0" prefWidth="415.0" />
-                  <JFXButton contentDisplay="RIGHT" ripplerFill="BLACK" text="View">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Images/map-marker-8x.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </JFXButton>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="598.0">
-               <children>
-                  <Label text="Date:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="20.0" right="43.0" />
-                     </HBox.margin>
-                  </Label>
-                  <CustomTextField prefHeight="25.0" prefWidth="500.0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Participants:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="20.0" right="3.0" />
-                     </HBox.margin>
-                  </Label>
-                  <JFXTreeTableView prefHeight="100.0" prefWidth="499.0" />
+                  <JFXTextArea editable="false" maxHeight="80.0" maxWidth="505.0" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="497.0" style="-fx-background-color: white; -fx-border-color: Black; -fx-border-radius: 9; -fx-background-radius: 9;" />
                </children>
             </HBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>

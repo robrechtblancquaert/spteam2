@@ -22,6 +22,6 @@ public class DashboardController extends MainController{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		MainController.me.addToMainPane(trainingView);
+		MainController.me.addToContentPane(trainingView);
 	}
 }
