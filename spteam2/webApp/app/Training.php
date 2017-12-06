@@ -14,6 +14,10 @@ class Training extends Model
  public $timestamps = false;
 // Functie om trainingen op te zoeken
 
+public function user(){
+    return $this->belongsTo('App\User');
+}
+
 public function trainingSearch($query,$search){
 //return $query->where('title','LIKE', %search% );
 

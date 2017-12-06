@@ -12,19 +12,15 @@ class PagesController extends Controller
        //2de methode
        return view('pages.index')->with('title',$title);
     }
-    public function about(){
-        $title = 'About Us';
-        return view('pages.about')->with('title',$title);
+    public function employee() {
+        $title = 'Employees';
+        return view('pages.employee')->with('title',$title);
 
     }
-    public function services(){
-        $data = array(
-            'title' => 'Services',
-            'services' => ['Web Design', 'Programming', 'SEO']
 
-        );
-        $title = 'Services :)';
-        return view('pages.services')->with($data);
+    public function settings() {
+        $title = 'Settings';
+        return view('pages.settings')->with('title',$title);
 
     }
 }

@@ -4,6 +4,18 @@
        <!-- <h1>{{$training->Trainingname}}</h1> -->
 
 <a href="/trainings"  class="btn btn-primary">Go Back</a>
+        <hr>
+        @if(!Auth::guest())
+        @if(Auth::user()->id == $training->user_id)
+       <a href="/trainings/{{$training->TrainingID}}/edit" class="btn btn-default" id="btnColor">Edit</a>
+       {!!Form::open(['action' => ['TrainingsController@destroy',$training->TrainingID], 'method' => 'POST','id' =>'cancelBtnShowTraining'])!!}
+                {{Form::hidden('_method','DELETE')}}
+                {{Form::submit('Cancel',['class' => 'btn btn-danger'])}}
+        
+        {!!Form::close()!!} 
+        @endif
+        @endif
+        <hr>
         <h1>{{$training->Trainingsname}}</h1>
         
                 <div >
@@ -18,16 +30,48 @@
                 </div>
                 <div>
                 <H4>Starting Date:  {!!$training->DateTime!!} </H4>
-                       
+                     
                 </div>
-        @if(!Auth::guest())
-        @if(Auth::user()->id == $training->user_id)
-       <a href="/trainings/{{$training->TrainingID}}/edit">Edit</a>
-       {!!Form::open(['action' => ['TrainingsController@destroy',$training->TrainingID], 'method' => 'POST','class' => 'pull-right'])!!}
-                {{Form::hidden('_method','DELETE')}}
-                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-        
-        {!!Form::close()!!} 
-        @endif
-        @endif
+                <!--Functie om de locatie uit de database (die een string is) om te zetten naar coordinaten door gebruik te maken van google maps api -->
+                <?php
+                        $adress = $training->Location;
+                        
+                        
+                        $adress = urlencode($adress);
+                        $url = 'http://maps.googleapis.com/maps/api/geocode/xml?address=' . $adress . '&sensor=true';
+                          $xml = simplexml_load_file($url);
+                          $status = $xml->status;
+                          if ($status == 'OK') {
+                              $latitude = $xml->result->geometry->location->lat;
+                              $longitude = $xml->result->geometry->location->lng;
+                   ?>
+                <!--Maakt een google map object aan en toont de locatie van de training door gebruik te maken van de functie hierboven -->
+                <!--Bron : https://developers.google.com/maps/documentation/javascript/adding-a-google-map?refresh=1 -->                
+                <div id="map"></div>
+                        <script>
+                        function initMap() {
+                                var uluru = {lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?>};
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom:12 ,
+                                center: uluru
+                                });
+                                var marker = new google.maps.Marker({
+                                position: uluru,
+                                map: map
+                                });
+                        }
+                        </script>
+                        <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxS_cNOtnfbgEjLX4UU_M1vLH7OKn8TX4&callback=initMap">
+                        </script>
+
+                        <?php        }
+
+
+                ?>
+                
+                        <hr>
+                        <p>Sometimes the map doesn't load up, refreshing while clearing the cache(ctrl+F5) will fix this issue</p>
+
+       
 @endsection

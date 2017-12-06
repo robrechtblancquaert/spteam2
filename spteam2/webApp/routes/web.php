@@ -16,11 +16,13 @@
 Route::get('/','PagesController@index');
 Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
+Route::get('/employee','PagesController@employee');
+Route::get('/settings','PagesController@settings');
 Auth::routes();
 
 
 
 Route::resource('trainings','TrainingsController');
 Auth::routes();
-
-Route::get('/dashboard', 'DashBoardController@index');
+Route::get('/home','HomeController@index');
+Route::get('/general', 'GeneralController@index');

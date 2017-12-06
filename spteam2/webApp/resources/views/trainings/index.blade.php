@@ -11,16 +11,18 @@
                 
                   
                     <!-- <h3> <a href="/trainings/{{$training->TrainingID}}">{{$training->Trainingsname}}</a></h3>-->
-                            <div class ="container-div">
+                            
                                 <div class="card" style="width: 20rem;">
                                 <img class="card-img-top" src="..." alt="">
                                 <div class="card-block">
-                                    <h4 class="card-title"></h4>
-                                    <p class="card-text">{!!$training->Description!!}</p>
-                                    <a href="/trainings/{{$training->TrainingID}}" class="btn btn-primary" <style></style>>{{$training->Trainingsname}}</a>
+                                    <h4 class="card-title">{{$training->Trainingsname}}</h4>
+                                    <p class="card-text"></p>
+                                    <a href="/trainings/{{$training->TrainingID}}" class="btn btn-primary" id="btnTraining" >
+                                        <p id="titleTraining">{{$training->Trainingsname}}</p>
+                                    </a>
                                 </div>
                                 </div>
-                                </div>
+                                
                                 
         @endforeach
     @else
