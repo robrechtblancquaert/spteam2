@@ -8351,7 +8351,7 @@ button.close {
 }
 
 body {
-  background-color: #5f5f5d;
+  background-color: #14171a;
 }
 
 .card {
@@ -8472,13 +8472,9 @@ body {
 }
 
 #employeeItem {
-  text-align: block;
   font-size: 20px;
-  float: left;
-  margin: 10px;
-  padding: 20px;
+  padding: 10px;
   background-color: #423c3c;
-  overflow: hidden;
 }
 
 ul {

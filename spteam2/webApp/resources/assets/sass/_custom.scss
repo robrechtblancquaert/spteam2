@@ -1,6 +1,6 @@
 body{
 
-    background-color: rgb(95, 95, 93);
+    background-color: #14171a;
 }
 
 .card {
@@ -118,13 +118,17 @@ border-color: black;
 }
 
 #employeeItem {
-    text-align: block;
+    //alles in comment is niet nodig maar toch bijhouden voor de zekerheid
+    //text-align: block;
+    //display : block;
+    // float: left;
+    // margin: 10px;
+    //overflow: hidden;
     font-size: 20px;
-    float: left;
-    margin: 10px;
-    padding: 20px;
+    padding: 10px;
     background-color: #423c3c;
-    overflow: hidden;
+
+    
    
 }
 ul {

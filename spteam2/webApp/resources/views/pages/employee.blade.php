@@ -54,16 +54,16 @@
     </div>
         
         <script id="employeeListTmpl" type="text/html">
-            <ul>
+           <!-- <ul>
                 
                 <li id="employeeItem">${FirstName} ${LastName}</li> 
-                
-            </ul> 
-
-           
+                 
+            </ul> -->
+                <p id="employeeItem">${FirstName} ${LastName}</p> 
+              
         </script>
 
-        <img src = "http://accweb/emmployees/davolio.bmp">
+        
         <div id="employeeList"></div>
 
    
