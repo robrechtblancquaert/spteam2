@@ -8481,3 +8481,17 @@ ul {
   list-style-type: none;
 }
 
+.color {
+  width: 400px;
+  height: 400px;
+  background: black;
+  margin: auto auto;
+}
+
+.clicked {
+  width: 400px;
+  height: 400px;
+  background-color: red;
+  margin: auto auto;
+}
+

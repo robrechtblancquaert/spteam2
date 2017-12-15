@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-       <?php 
-        session_start();
-    ?>
+      
     <h1>{{$title}}</h1>
     <h3 id="title">Change the style </h3>
     <button id="test" type="button" onclick="changeColor()">Default</button>
@@ -14,7 +12,7 @@
     <div class="color" id="change" style="width:100% , height:100%;">
         <p>test</p>
 
-    <div>
+    </div>
    <script>
     function changeColor(){
         $('#change').toggleClass('clicked');
