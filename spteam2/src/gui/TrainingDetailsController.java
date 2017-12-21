@@ -12,17 +12,23 @@ import com.jfoenix.controls.JFXPopup.PopupHPosition;
 import com.jfoenix.controls.JFXPopup.PopupVPosition;
 import com.jfoenix.controls.JFXTextArea;
 
+import books.Book;
+import employee.Employee;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import maps.Location;
 import training.Training;
 
 public class TrainingDetailsController extends AnchorPane {
@@ -39,9 +45,9 @@ public class TrainingDetailsController extends AnchorPane {
 	@FXML
 	private JFXTextArea description;
 	@FXML
-	private VBox participantsBox;
+	private HBox participantsBox;
 	@FXML
-	private VBox booksBox;
+	private HBox booksBox;
 	@FXML
 	private JFXButton mapButton;
 	
@@ -62,7 +68,62 @@ public class TrainingDetailsController extends AnchorPane {
 		location.setText(training.getLocation().toString());
 		description.setText(training.getDescription());
 		
+		initializeParticipantsBox();
+		initializeBooksBox();
+	}
 	
+	private void initializeParticipantsBox() {
+		if(training.getParticipants().size() == 0) {
+			participantsBox.getChildren().add(new Label("none"));
+			return;
+		}
+		
+		VBox name = new VBox();
+		name.setAlignment(Pos.CENTER_LEFT);
+		name.setPrefWidth(200);
+		VBox function = new VBox();
+		function.setAlignment(Pos.CENTER_LEFT);
+		participantsBox.getChildren().add(name);
+		participantsBox.getChildren().add(function);
+		
+		Label nameLabel = new Label("name");
+		nameLabel.setTextFill(Color.CADETBLUE);
+		name.getChildren().add(nameLabel);
+		Label functionLabel = new Label("function");
+		functionLabel.setTextFill(Color.CADETBLUE);
+		function.getChildren().add(functionLabel);
+		
+		for(Employee e :training.getParticipants()) {
+			name.getChildren().add(new Label(e.getName()));
+			function.getChildren().add(new Label(e.getRole()));
+		}
+	}
+	
+	private void initializeBooksBox() {
+		if(training.getBooks().size() == 0) {
+			booksBox.getChildren().add(new Label("none"));
+			return;
+		}
+		
+		VBox name = new VBox();
+		name.setAlignment(Pos.CENTER_LEFT);
+		name.setPrefWidth(200);
+		VBox isbn = new VBox();
+		isbn.setAlignment(Pos.CENTER_LEFT);
+		booksBox.getChildren().add(name);
+		booksBox.getChildren().add(isbn);
+		
+		Label nameLabel = new Label("title");
+		nameLabel.setTextFill(Color.CADETBLUE);
+		name.getChildren().add(nameLabel);
+		Label functionLabel = new Label("isbn");
+		functionLabel.setTextFill(Color.CADETBLUE);
+		isbn.getChildren().add(functionLabel);
+		
+		for(Book e :training.getBooks()) {
+			name.getChildren().add(new Label(e.getTitle()));
+			isbn.getChildren().add(new Label(e.getIsbn()));
+		}
 	}
 	
 	@FXML
@@ -79,7 +140,9 @@ public class TrainingDetailsController extends AnchorPane {
 		WebEngine webEngine = webView.getEngine();
 		webEngine.load(getClass().getResource("map.html").toExternalForm());
 		webEngine.setJavaScriptEnabled(true);
-		String function = "moveToLocation(" + training.getLocation().getLatitude() + ", " + training.getLocation().getLongitude() + ");";
+		Location location = new Location();
+		location.setAddress(training.getLocation());
+		String function = "moveToLocation(" + location.getLatitude() + ", " + location.getLongitude() + ");";
 		
 		webEngine.getLoadWorker().stateProperty().addListener(new javafx.beans.value.ChangeListener<State>() {
 
@@ -95,12 +158,12 @@ public class TrainingDetailsController extends AnchorPane {
 		AnchorPane content = new AnchorPane();
 		content.getChildren().add(webView);
 		AnchorPane.setLeftAnchor(webView, (double) 0);
-		AnchorPane.setRightAnchor(webView, (double) 0);
+		AnchorPane.setRightAnchor(webView, (double) 0); 
 		AnchorPane.setTopAnchor(webView, (double) 0);
 		AnchorPane.setBottomAnchor(webView, (double) 0);
 		JFXPopup popup = new JFXPopup(content);
 		webView.setMaxSize(420, 420);
 		popup.setMaxSize(420, 420);
-		popup.show(mapButton, PopupVPosition.TOP, PopupHPosition.LEFT);
+		popup.show(mapButton, PopupVPosition.TOP, PopupHPosition.LEFT, 20, 20);
 	}
 }

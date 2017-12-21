@@ -6,8 +6,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -85,15 +89,37 @@ public class Dao<T extends DatabaseObject> {
 		return t;
 	}
 	
-	public List<T> selectObject(String hql) {
+	public List<Object> selectObject(String hql) {
 		if(!hql.toLowerCase().contains(dbObject.getClass().getName().toLowerCase())) throw new IllegalArgumentException("Query did not contain correct from clause, from clause must contain " + dbObject.getClass().getName() +".");
 		if(!hql.toLowerCase().contains("from")) throw new IllegalArgumentException("Query must contain FROM clause.");
 		
 		Session session = sessionFactory.openSession();
-		List<T> results = new ArrayList<T>();
+		List<Object> results = new ArrayList<Object>();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(hql);
+			results = query.getResultList();
+		} catch(Exception e) {
+			if (session.getTransaction()!=null) session.getTransaction().rollback();
+			e.printStackTrace(); 
+		} finally {
+			session.close();
+		}
+		return results;
+	}
+	
+	public List<T> selectObjectBetweenDates(String dateColumnName, Calendar startDate, Calendar endDate) {
+		String hql = "FROM " + dbObject.getClass().getName() + " T WHERE T." + dateColumnName + " BETWEEN :startDate AND :endDate ";
+		//SimpleDateFormat sf = new SimpleDateFormat("dd-MM-YYYY");
+		//String fromDate= sf.format(startDate);
+		//String toDate= sf.format(endDate);
+		Session session = sessionFactory.openSession();
+		List<T> results = new ArrayList<T>();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(hql)
+					.setParameter("startDate", startDate)
+					.setParameter("endDate", endDate);
 			results = query.getResultList();
 		} catch(Exception e) {
 			if (session.getTransaction()!=null) session.getTransaction().rollback();

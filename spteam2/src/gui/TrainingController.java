@@ -87,7 +87,7 @@ public class TrainingController extends AnchorPane{
 		String date = dateFormat.format(training.getDate().getTime());
 		this.date.setText(date);
 		this.description.setText((training.getDescription()));
-		this.location.setText(training.getDescription());
+		this.location.setText(training.getLocation());
 		Integer participants = training.getParticipants().size();
 		this.participantsNumber.setText(participants.toString());
 	}

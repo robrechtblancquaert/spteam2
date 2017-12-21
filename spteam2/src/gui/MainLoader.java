@@ -24,11 +24,12 @@ public class MainLoader extends Application{
 	public void start (Stage primaryStage) throws IOException{
 		main = this;
 		this.primaryStage= primaryStage;
-		this.primaryStage.setTitle("Login");
 		showLogin();
 	}
 	
-	private void showLogin(){
+	public void showLogin(){
+		primaryStage.hide();
+		this.primaryStage.setTitle("Login");
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MainLoader.class.getResource("LoginView.fxml"));
 		try {

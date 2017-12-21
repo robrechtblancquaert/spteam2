@@ -57,13 +57,24 @@ public class MainController {
     	AnchorPane dashBoardTopMenu = null;
 		try {
 			dashBoardTopMenu = loader.load();
-		} catch (IOException e) {}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		topLeftMenu.getChildren().add(dashBoardTopMenu);
 	}
 	
 	public void showStatistics() {
 		activateTab(statisticsButton);
 		this.clear();
+		FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation((MainLoader.class.getResource("StatisticsTopMenuViewPart.fxml")));
+    	AnchorPane statisticsTopMenu = null;
+		try {
+			statisticsTopMenu = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		topLeftMenu.getChildren().add(statisticsTopMenu);
 	}
 	
 	@FXML
@@ -94,7 +105,11 @@ public class MainController {
 	
 	@FXML
 	private void logout() {
-		Platform.exit();
+		MainLoader.getMain().showLogin();
+	}
+	
+	public void  clearContentPane() {
+		contentPane.getChildren().clear();
 	}
 	
 	public void openPopup(AnchorPane a) {
@@ -104,7 +119,7 @@ public class MainController {
 		}
 		contentPane.getChildren().add(a);
 		AnchorPane.setLeftAnchor(a, 350d);
-		AnchorPane.setTopAnchor(a, 200d);
+		AnchorPane.setTopAnchor(a, 80d);
 	}
 	
 	public void closePopup() {
@@ -113,7 +128,7 @@ public class MainController {
 		}
 	}
 	
-	public void loading(boolean b) {
+	public synchronized void loading(boolean b) {
 		for(Node e : contentPane.getChildren()) {
 			if(e.getId() == "loading") {
 				contentPane.getChildren().remove(e);
@@ -121,6 +136,7 @@ public class MainController {
 		}
 		
 		if(b) {
+			contentPane.getChildren().clear();
 			Label loading = new Label("Loading...");
 			loading.setFont(Font.font(30));
 			loading.setId("loading");
