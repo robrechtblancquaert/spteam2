@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="200.0" style="-fx-background-color: #606669;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashboardController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="75.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label text="Options" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="10.0" prefWidth="200.0">
+               <children>
+                  <Separator prefWidth="80.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="5.0" />
+                  <Separator layoutX="10.0" layoutY="10.0" prefWidth="80.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <Label text="From:" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Label>
+            <JFXDatePicker fx:id="fromCalendar" editable="false" style="-fx-background-color: white;">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></JFXDatePicker>
+            <Label text="To:" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <JFXDatePicker fx:id="toCalendar" editable="false" style="-fx-background-color: white;">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></JFXDatePicker>
+            <Label text="Interval:" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <JFXComboBox fx:id="intervalBox" promptText="Choose interval" style="-fx-background-color: white;">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </JFXComboBox>
+         </children>
+      </VBox>
+      <JFXButton fx:id="applyButton" alignment="CENTER" buttonType="RAISED" layoutX="20.0" layoutY="20.0" onAction="#applyOptions" prefWidth="100.0" ripplerFill="#222339" style="-fx-background-color: #EFEFEF;" text="Apply" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/check.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+   <padding>
+      <Insets top="30.0" />
+   </padding>
+</AnchorPane>

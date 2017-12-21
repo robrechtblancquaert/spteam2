@@ -9,10 +9,6 @@
       <id name = "id" type = "int" column = "TrainingID">
       	<generator class="native"/>
       </id>
-     
-      <component name="location" class="maps.Location">
-      	 <property name = "address" column = "Location" type = "string"/>
-      </component>
       
       <set name = "participants" cascade="save-update" table="CERTIFICATIONLINK" lazy="false">
          <key column = "TrainingID"/>
@@ -32,5 +28,7 @@
       <property name = "name" column = "TrainingsName" type = "string"/>
       <property name = "description" column = "Description" type = "string"/>
       <property name = "date" column = "DateTime" type = "calendar"/>
+      <property name = "userid" column = "user_id" type = "int"/>
+      <property name = "location" column = "Location" type = "string"/>
    </class>
 </hibernate-mapping>

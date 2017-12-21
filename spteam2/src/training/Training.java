@@ -12,6 +12,7 @@ import database.Dao;
 import database.DatabaseObject;
 import employee.Certification;
 import employee.Employee;
+import employee.EmployeeApi;
 import employee.EncodeImage;
 import maps.Location;
 
@@ -19,14 +20,15 @@ public class Training implements DatabaseObject{
 		private int id;
 		private String name;
 		private String description;
-		private Location location;
+		private String location;
 		private Calendar date;
 		private Set<Book> books = new HashSet<Book>();
 		private Set<Employee> participants = new HashSet<Employee>();
 		private Set<Survey> surveys = new HashSet<Survey>();
+		private int userid;
 		
 		public Training() {}
-		public Training(String name, String description, Location location, Calendar date, Set<Employee> participants) {
+		public Training(String name, String description, String location, Calendar date, Set<Employee> participants) {
 			super();
 			this.name = name;
 			this.description = description;
@@ -53,10 +55,10 @@ public class Training implements DatabaseObject{
 		public void setDescription(String description) {
 			this.description = description;
 		}
-		public Location getLocation() {
+		public String getLocation() {
 			return location;
 		}
-		public void setLocation(Location location) {
+		public void setLocation(String location) {
 			this.location = location;
 		}
 		public Calendar getDate() {
@@ -82,35 +84,32 @@ public class Training implements DatabaseObject{
 		}
 		public void setSurveys(Set<Survey> surveys) {
 			this.surveys = surveys;
+		}	
+		public int getUserid() {
+			return userid;
+		}
+		public void setUserid(int userid) {
+			this.userid = userid;
 		}
 		
 		public static void main(String[] args) {
 			Training training = new Training();
+			training.setName("AllEmployeesTest");
 			Set<Book> books = new HashSet<Book>();
 			books.add(BookApi.findBooksBySearch("java").get(0));
 			books.add(BookApi.findBooksBySearch("c++").get(1));
-			training.setBooks(books);
-			Calendar calendar = new GregorianCalendar(2017, 11, 5, 12, 30);
+			books.add(BookApi.findBooksBySearch("python").get(4));
+			books.add(BookApi.findBooksBySearch("ruby").get(2));
+			//training.setBooks(books);
+			Calendar calendar = new GregorianCalendar(2018, 2, 1, 12, 30);
 			training.setDate(calendar);
-			training.setDescription("This is a test");
+			training.setDescription("This is a test with a lot of employees and books.");
 			Location location = new Location();
-			location.setAddress("170 nijverheidskaai brussels belgium");
+			location.setAddress("Rotselaar");
 			location.formatAddress();
-			training.setLocation(location);
-			training.setName("test");
-			Set<Employee> participants = new HashSet<Employee>();
-			Employee e = new Employee(57, "Robrecht", "admin");
-			Set<Certification> certifications = new HashSet<Certification>();
-			certifications.add(new Certification("test", "testcertification", EncodeImage.encode("C:\\Users\\Robrecht Blancquaert\\Documents\\SoftwareProject17-18\\project\\documents\\UML.png"), calendar));
-			e.setCertifications(certifications);
-			participants.add(e);
-			participants.add(new Employee(20187, "Scott", "user"));
+			training.setLocation(location.toString());
+			Set<Employee> participants = EmployeeApi.getEmployee(null);
 			training.setParticipants(participants);
-			Set<Survey> surveys = new HashSet<Survey>();
-			Survey survey = new Survey("testsurvey");
-			survey.setEmployeeid(57);
-			surveys.add(survey);
-			training.setSurveys(surveys);
 			Dao<Training> daoTraining = new Dao<Training>(Training.class);
 			daoTraining.save(training);
 		}
