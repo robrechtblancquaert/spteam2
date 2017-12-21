@@ -3,8 +3,6 @@ package gui;
 import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.controls.JFXSpinner;
 
 import javafx.application.Platform;
@@ -12,20 +10,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 
 
 public class MainController {
-	public static MainController me;
+	private static MainController mc = null;
 	
 	@FXML
     private JFXButton logoutButton;
-	@FXML
-	protected JFXSpinner loadingSpinner;
 	@FXML 
 	private AnchorPane topLeftMenu;
 	@FXML
@@ -38,27 +32,21 @@ public class MainController {
 	protected AnchorPane leftPane;
 	@FXML
 	private HBox homePane;
+	
 	private JFXButton activetab;
 	private String activeButtonColour = "#777777";
 	
-    public void initialize() throws IOException {
-    	me = this;
-    }
-    
-    @FXML
-    public void setSpinnerVis(boolean b) {
-    	loadingSpinner.setVisible(b);
-    }
-   
-    @FXML
-	public AnchorPane getTopLeftMenu() {
-		return topLeftMenu;
+	public MainController() throws DuplicateControllerException {
+		if (mc != null) throw new DuplicateControllerException();
 	}
 	
-	@FXML
-	public AnchorPane getContentPane() {
-		return contentPane;
-	}
+    public void initialize() {
+    	mc = this;
+    }
+    
+    public static MainController get() {
+    	return mc;
+    }
 	
 	@FXML
 	public void showDashboard() {
@@ -80,7 +68,6 @@ public class MainController {
 	
 	@FXML
 	private void clear() {
-		setSpinnerVis(false);
 		leftPane.setVisible(true);
 		homePane.setVisible(false);
 		if(topLeftMenu.getChildren() != null) topLeftMenu.getChildren().clear();
@@ -88,26 +75,59 @@ public class MainController {
 	}
 	
 	@FXML
-	public void activateTab(JFXButton button) {
+	private void activateTab(JFXButton button) {
 		if(this.activetab != null) this.activetab.setStyle("-fx-background-color: transparent");
 		activetab = button;
 		button.setStyle("-fx-background-color: " + activeButtonColour);
 	}
 	
 	@FXML
-	public void addToContentPane(Node e) {
-		JFXListView list = new JFXListView();
-		list.getItems().add(e);
-		contentPane.setLeftAnchor(list, 50.0);
-		contentPane.setTopAnchor(list, 50.0);
-		contentPane.setRightAnchor(list, 50.0);
-		contentPane.setBottomAnchor(list, 50.0);
-		contentPane.getChildren().add(list);
+	public void setToContentPane(Node e) {
+		if(contentPane.getChildren() == null) return;
+		contentPane.getChildren().clear();
+		contentPane.getChildren().add(e);
+		AnchorPane.setBottomAnchor(e, 0d);
+		AnchorPane.setTopAnchor(e, 0d);
+		AnchorPane.setLeftAnchor(e, 0d);
+		AnchorPane.setRightAnchor(e, 0d);
 	}
 	
-	public void logout() {
+	@FXML
+	private void logout() {
 		Platform.exit();
+	}
+	
+	public void openPopup(AnchorPane a) {
+		a.setId("popup");
+		for(Node e : contentPane.getChildren()) {
+			if(e.getId() == "popup") contentPane.getChildren().remove(e);
+		}
+		contentPane.getChildren().add(a);
+		AnchorPane.setLeftAnchor(a, 350d);
+		AnchorPane.setTopAnchor(a, 200d);
+	}
+	
+	public void closePopup() {
+		for(Node e : contentPane.getChildren()) {
+			if(e.getId() == "popup") contentPane.getChildren().remove(e);
+		}
+	}
+	
+	public void loading(boolean b) {
+		for(Node e : contentPane.getChildren()) {
+			if(e.getId() == "loading") {
+				contentPane.getChildren().remove(e);
+			}
+		}
 		
+		if(b) {
+			Label loading = new Label("Loading...");
+			loading.setFont(Font.font(30));
+			loading.setId("loading");
+			contentPane.getChildren().add(loading);
+			AnchorPane.setLeftAnchor(loading, 600d);
+			AnchorPane.setTopAnchor(loading, 400d);
+		}
 	}
 }
 

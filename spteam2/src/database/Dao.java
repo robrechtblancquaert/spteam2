@@ -1,6 +1,11 @@
 package database;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +15,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import books.Book;
+import training.Training;
 /**
  * 
  * @author Robrecht Blancquaert
@@ -19,6 +25,24 @@ import books.Book;
 public class Dao<T extends DatabaseObject> {
 	private static SessionFactory sessionFactory = new Configuration().configure("/database/hibernate.cfg.xml").buildSessionFactory();
 	private T dbObject;
+	
+	public static void backup(String filepath) {
+		File f1 = new File(filepath);
+	    f1.mkdir();
+		try {
+			Runtime.getRuntime().exec("mysqldump -u SP2Team2 -pxkpRRfJ SP2Team2 -r " + filepath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void restore(String filepath) {
+		try {
+			Runtime.getRuntime().exec("mysql -u SP2Team2 -pxkpRRfJ SP2Team2 < " + filepath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public Dao(Class<T> dbClass) {
 		try {
@@ -133,18 +157,5 @@ public class Dao<T extends DatabaseObject> {
 		if(t.getSId() == null) return null;
 		t = getById(t.getSId());
 		return t;
-	}
-	
-	public static void main(String[] args) {
-		Dao<Book> daoBook = new Dao<Book>(Book.class);
-		Book book = daoBook.getById("ONEBAAAAMAAJ");
-		System.out.println(book);
-		System.out.println(daoBook.selectObject("FROM " + daoBook.getClassName() + " WHERE id = \'ONEBAAAAMAAJ\'"));
-		List<Object[]> select = Dao.selectColumns("SELECT id, title FROM books.Book");
-		System.out.println(select);
-		for(Object[] o : select) {
-			System.out.println((String) o[0] +", ");
-			System.out.println((String) o[1] + "  ");
-		}
 	}
 }

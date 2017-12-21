@@ -44,6 +44,7 @@ public class MainLoader extends Application{
 	}
 	
 	public void showDashboard() {
+		primaryStage.hide();
 		this.primaryStage.setTitle("Training Management");
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MainLoader.class.getResource("MainView.fxml"));
@@ -55,7 +56,8 @@ public class MainLoader extends Application{
 		}
 		Scene scene = new Scene (dashboard);
 		primaryStage.setScene(scene);
-		primaryStage.show();	
+		primaryStage.centerOnScreen();
+		primaryStage.show();
 		
 	}
 	

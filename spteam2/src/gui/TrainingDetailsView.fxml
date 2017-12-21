@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: #009688;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane maxWidth="596.0" minWidth="596.0" prefHeight="390.0" prefWidth="596.0">
+               <children>
+                  <Label fx:id="windowTitle" alignment="TOP_LEFT" contentDisplay="CENTER" graphicTextGap="8.0" lineSpacing="8.0" opacity="0.8" style="-fx-background-color: #009688;" text="Training Details" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </opaqueInsets>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Name:" textFill="#009688">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="name" editable="false" prefWidth="500.0">
+                                 <HBox.margin>
+                                    <Insets left="34.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Date:" textFill="#009688">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="date" alignment="CENTER" prefHeight="26.0" prefWidth="157.0">
+                                 <HBox.margin>
+                                    <Insets left="42.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label text="Format:" textFill="#009688">
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label text="Day/Month/Year" textFill="#009688">
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Location:" textFill="#009688">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="location" editable="false" prefHeight="26.0" prefWidth="455.0">
+                                 <HBox.margin>
+                                    <Insets left="21.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <JFXButton fx:id="mapButton" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" maxHeight="20.0" maxWidth="20.0" onAction="#openMap" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: white;">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/map-marker-8x.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" left="5.0" right="2.0" top="2.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Description:" textFill="#009688">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextArea fx:id="description" prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: lightgrey;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="5.0" />
+                                 </HBox.margin>
+                              </JFXTextArea>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <AnchorPane prefWidth="590.0">
+                                 <children>
+                                    <Label text="Participants:" textFill="#009688">
+                                       <font>
+                                          <Font name="Calibri Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox fx:id="participantsBox" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <AnchorPane prefWidth="590.0">
+                                 <children>
+                                    <Label text="Books:" textFill="#009688">
+                                       <font>
+                                          <Font name="Calibri Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox fx:id="booksBox" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <JFXButton fx:id="closeButton" buttonType="RAISED" onAction="#close" prefWidth="100.0" ripplerFill="BLACK" style="-fx-border-color: #009688; -fx-border-radius: 1; -fx-background-color: white;" text="Close" textFill="#009688" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</fx:root>

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" style="-fx-border-color: Black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" style="-fx-border-color: Black; -fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
    <children>
       <VBox alignment="CENTER" layoutX="250.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,12 +24,36 @@
                   <Font name="Century" size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="lockIcon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/lock-locked-8x.png" />
-               </image>
-            </ImageView>
-            <Label text="Username" />
+            <HBox fx:id="messageBox" alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="message" alignment="CENTER" contentDisplay="TOP" text="Credentials:">
+                     <graphic>
+                        <ImageView fx:id="lockIcon" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/lock-locked-8x.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="Username">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/person-8x.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             <JFXTextField fx:id="username" alignment="CENTER" prefHeight="25.0" prefWidth="337.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
@@ -39,6 +63,16 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/key-8x.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <JFXPasswordField fx:id="password" alignment="CENTER">
                <VBox.margin>
@@ -47,7 +81,7 @@
             </JFXPasswordField>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="loginButton" onAction="#checkLogin" style="-fx-border-color: #14CAD4; -fx-border-radius: 10 10 10 10; -fx-border-width: 3; -fx-background-color: #EFEFEF;" text="Login" textFill="#14cad4">
+                  <JFXButton fx:id="loginButton" onAction="#checkLogin" style="-fx-border-color: #14CAD4; -fx-border-radius: 10 10 10 10; -fx-border-width: 3; -fx-background-color: white;" text="Login" textFill="#14cad4">
                      <font>
                         <Font name="Calibri" size="24.0" />
                      </font>
@@ -64,15 +98,5 @@
             </HBox>
          </children>
       </VBox>
-      <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="25.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/person-8x.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="25.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/key-8x.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

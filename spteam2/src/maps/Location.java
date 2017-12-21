@@ -75,13 +75,34 @@ public class Location {
 		Location l = new Location();
 		l.address = address;
 		l.formatAddress();
+		System.out.println(l.jsonAddress);
 		System.out.println(l.address);
 		System.out.println(l.get(Addresskey.STREET_NUMBER));
 		l.set(Addresskey.STREET_NUMBER, "15");
 		l.formatAddress();
 		System.out.println(l.address);
 	}
-
+	
+	public double getLatitude() {
+		if(jsonAddress == null) jsonAddress = LocationApi.getJsonAddress(address);
+		JSONObject result = jsonAddress.getJSONArray("results").getJSONObject(0);
+		JSONObject geometry = result.getJSONObject("geometry");
+		JSONObject location = geometry.getJSONObject("location");
+		double lat = location.getDouble("lat");
+		
+		return lat;
+	}
+	
+	
+	public double getLongitude() {
+		if(jsonAddress == null) jsonAddress = LocationApi.getJsonAddress(address);
+		JSONObject result = jsonAddress.getJSONArray("results").getJSONObject(0);
+		JSONObject geometry = result.getJSONObject("geometry");
+		JSONObject location = geometry.getJSONObject("location");
+		double lng = location.getDouble("lng");
+		
+		return lng;
+	}
 	@Override
 	public String toString() {
 		return address;
