@@ -18,8 +18,8 @@ public abstract class User {
 			String salt = (String) session.createSQLQuery("SELECT SUBSTRING(Password, 1, 29) FROM users WHERE name = \'" + username + "\'").list().get(0);
 			String hashedPassword = BCrypt.hashpw(password, salt);
 		
-			List received = session.createSQLQuery("SELECT 1 FROM users WHERE name = \'" + username + "\' AND password = \'" + hashedPassword + "\'").list();
-			if(received.size() == 1) {
+			List received = session.createSQLQuery("SELECT Role FROM users WHERE name = \'" + username + "\' AND password = \'" + hashedPassword + "\'").list();
+			if((Integer) received.get(0) == 2) {
 				return true;
 			}
 		} catch(IndexOutOfBoundsException e) {
@@ -30,7 +30,7 @@ public abstract class User {
 		return false;
 	}
 	
-	public static void createUser(String username, String password, String email) {
+	public static void createUser(String username, String password, String email, int role) {
 		String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
 		
 		SessionFactory sessionFactory = new Configuration().configure("/database/hibernate.cfg.xml").buildSessionFactory();
@@ -38,7 +38,7 @@ public abstract class User {
 		session.beginTransaction();
 		
 		try {
-			String query = "INSERT INTO users (name, email, password) VALUES (\'" + username + "\', \'" + email + "\', \'" + hashedPassword + "\')";
+			String query = "INSERT INTO users (name, email, password, Role) VALUES (\'" + username + "\', \'" + email + "\', \'" + hashedPassword + "\', " + role + ")";
 			session.createSQLQuery(query).executeUpdate();
 		} finally {
 			session.close();

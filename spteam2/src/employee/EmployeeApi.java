@@ -74,18 +74,4 @@ public abstract class EmployeeApi {
 			return null;
 		}
 	}
-	
-	public static void main(String[] args) {
-		Set<Employee> es = EmployeeApi.getEmployee(null);
-		for(Employee e : es) {
-			System.out.println(e);
-		}
-		Map<EmployeeKey, Serializable> atts = new HashMap<EmployeeKey, Serializable>();
-		System.out.println();
-		atts.put(EmployeeKey.EmployeeID, "1");
-		es = EmployeeApi.getEmployee(atts);
-		for(Employee e : es) {
-			System.out.println(e);
-		}
-	}
 }
