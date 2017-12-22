@@ -25,6 +25,7 @@ class GeneralController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
+        $user_role = auth()->user()->Role;
         $user = User::find($user_id);
         return view('general')->with('trainings',$user->trainings);
     }

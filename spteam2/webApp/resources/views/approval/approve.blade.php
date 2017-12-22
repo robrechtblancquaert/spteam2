@@ -2,8 +2,7 @@
 
 @section('content')
         <h1>Edit Training</h1>
-        {{ Form::model($training, array('route' => array('trainings.update', $training->TrainingID), 'files' => true, 'method' => 'PUT')) }}
-        
+        {{ Form::model($training, array('route' => array('approval.update', $training->TrainingID), 'files' => true, 'method' => 'PUT')) }}
             <div class ="form-group">
                 {{Form::label('Trainingsname','Training Name')}}
                 {{Form::text('Trainingsname',$training->Trainingsname,['class' => 'form-control','placeholder' =>'Trainingsname'])}}
@@ -22,13 +21,9 @@
                 {{Form::label('DateTime','When')}}
                 {{Form::date('DateTime', \Carbon\Carbon::now())}}
             </div>
-            
-             {{Form::hidden('_method','PUT')}}
-            {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-        
+
+            {{Form::hidden('_method','PUT')}}    
+            {{Form::submit('Approve Training', ['class' => 'btn btn-success'])}}
         {!! Form::close() !!}   
        
 @endsection
-
-
-

@@ -8455,11 +8455,43 @@ body {
 }
 
 #homeMenu {
-  width: 35%;
+  width: 50%;
   height: 25%;
 }
 
 #colorHomeMen {
   color: white;
+}
+
+#employee {
+  text-align: center;
+}
+
+#employeeList {
+  text-align: center;
+}
+
+#employeeItem {
+  font-size: 20px;
+  padding: 10px;
+  background-color: #423c3c;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.color {
+  width: 400px;
+  height: 400px;
+  background: black;
+  margin: auto auto;
+}
+
+.clicked {
+  width: 400px;
+  height: 400px;
+  background-color: red;
+  margin: auto auto;
 }
 

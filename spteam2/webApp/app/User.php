@@ -29,4 +29,18 @@ class User extends Authenticatable
     public function trainings(){
         return $this->hasMany('App\Training');
     }
+
+    //RoleCheck
+    public function isDisabled(){
+        return $this->roleCheck();
+    }
+    public function isHR(){
+            return $this->roleCheck(1);
+    }
+    public function isEmployee(){
+        return $this->roleCheck(2);
+    }
+    protected function roleCheck($Role = 0){
+        return $this->Role === $Role ? true : false;
+    }
 }

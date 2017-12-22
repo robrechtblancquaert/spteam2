@@ -107,3 +107,43 @@ border-color: black;
 #colorHomeMen{
     color:white;
 }
+#employee {
+    text-align: center;
+
+}
+#employeeList {
+   text-align: center;
+   
+}
+
+#employeeItem {
+    //alles in comment is niet nodig maar toch bijhouden voor de zekerheid
+    //text-align: block;
+    //display : block;
+    // float: left;
+    // margin: 10px;
+    //overflow: hidden;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #423c3c;
+    
+    
+   
+}
+ul {
+    list-style-type: none;
+
+}
+
+.color {
+    width: 400px;
+    height: 400px;
+    background: black;
+    margin: auto auto;
+  }
+  .clicked {
+  width: 400px;
+    height: 400px;
+    background-color: red;
+    margin: auto auto;
+  }
