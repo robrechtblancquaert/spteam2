@@ -8,10 +8,12 @@ import com.jfoenix.controls.JFXSpinner;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 
@@ -25,7 +27,7 @@ public class MainController {
 	@FXML
 	private JFXButton dashboardButton;
 	@FXML
-	private JFXButton statisticsButton;
+	private JFXButton adminButton;
 	@FXML
 	protected AnchorPane contentPane;
 	@FXML
@@ -63,18 +65,31 @@ public class MainController {
 		topLeftMenu.getChildren().add(dashBoardTopMenu);
 	}
 	
-	public void showStatistics() {
-		activateTab(statisticsButton);
+	public void showAdmin() {
+		activateTab(adminButton);
 		this.clear();
 		FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation((MainLoader.class.getResource("StatisticsTopMenuViewPart.fxml")));
-    	AnchorPane statisticsTopMenu = null;
+    	loader.setLocation((MainLoader.class.getResource("AdminTopMenuViewPart.fxml")));
+    	AnchorPane adminTopMenu = null;
 		try {
-			statisticsTopMenu = loader.load();
+			adminTopMenu = loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		topLeftMenu.getChildren().add(statisticsTopMenu);
+		topLeftMenu.getChildren().add(adminTopMenu);
+		
+		FXMLLoader newloader = new FXMLLoader();
+		newloader.setLocation((MainLoader.class.getResource("CreateUserView.fxml")));
+    	AnchorPane userViewMenu = null;
+		try {
+			userViewMenu = newloader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		VBox vbox = new VBox();
+		vbox.getChildren().add(userViewMenu);
+		vbox.setPadding(new Insets(20,20,20,20));
+		setToContentPane(vbox);
 	}
 	
 	@FXML

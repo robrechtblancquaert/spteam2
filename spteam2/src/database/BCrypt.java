@@ -774,15 +774,4 @@ public class BCrypt {
 			ret |= hashed_bytes[i] ^ try_bytes[i];
 		return ret == 0;
 	}
-	
-	public static void main(String[] args) {
-		String salt = gensalt(10);
-		System.out.println(salt);
-		String pasw1 = "test";
-		String hashed = hashpw(pasw1, salt);
-		System.out.println(hashed.substring(0, 29));
-		System.out.println(hashed);
-		String newpass = hashpw(pasw1, hashed.substring(0, 29));
-		System.out.println(checkpw("test", newpass));
-	}
 }
