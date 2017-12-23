@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Mail;
+use App\User;
 use App\Training;
 
 class ApprovalController extends Controller
@@ -78,6 +80,10 @@ class ApprovalController extends Controller
     
     public function update(Request $request, $id)
     {
+        
+
+
+
         $this->validate($request, [
             'Trainingsname' => 'required',
             'Description' => 'required',
@@ -90,7 +96,36 @@ class ApprovalController extends Controller
            $training= Training::find($id);
             $training->Approved = 1;
            $training->save();
-           return redirect('/approval')->with('success', 'Training Approved');
+           //mail
+           $user = User::find($training->user_id);
+           
+               $title = 'Reminder course';
+               $content = 'This is a reminder for your course';
+               $date = $training->DateTime;
+               $trainingsname = $training->Trainingsname;
+               $location = $training->Location;
+               $description = $training->Description;
+               $username = $user->name;
+           
+        
+   
+           Mail::send('emails.test', [
+               'title' => $title,
+                'content' => $content,
+                'date'=>$date,
+                'trainingsname'=>$trainingsname,
+                'location'=>$location,
+                'description'=>$description,
+                'username'=>$username
+            ],
+           function ($message) use ($user) {
+               $message->subject('Training Reminder');
+               $message->to($user->email);
+           });
+
+
+
+           return redirect('/approval')->with('success', 'Training Approved, reminder sent through mail');
     }
 
     /**

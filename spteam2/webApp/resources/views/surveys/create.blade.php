@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create Survey</h1>
+    <h1>Fill In Survey</h1>
     {!! Form::open(['action' => 'SurveysController@store','method' => 'POST', 'enctype'=> 'multipart/form-data']) !!}
 
         <div class="form-group">

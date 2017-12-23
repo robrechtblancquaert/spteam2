@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 @section('content')
     <h1>Surveys</h1>
-    <a href="/surveys/create" class="btn btn-primary">Create Survey</a>
+    <a href="/surveys/create" class="btn btn-primary">Fill In Survey</a>
+    <br>
+    <br>
+    <h4><strong>Sort:</strong></h4>
+            <a class="btn btn-primary" href="{{route('surveys.index', ['SurveyID' => request('SurveyID'), 'sort' => 'asc'])}}">Ascending</a>
+            <a class="btn btn-primary" href="{{route('surveys.index', ['SurveyID' => request('SurveyID'), 'sort' => 'desc'])}}">Descending</a>
     <hr>
     @if(count($surveys) > 0)
 
@@ -16,8 +22,11 @@
                 </div>
                 </div>
                 </div>
+                
         @endforeach
     @else
     <p>No Surveys Found.</p>
     @endif
+
+
 @endsection

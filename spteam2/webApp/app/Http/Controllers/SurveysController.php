@@ -11,14 +11,17 @@ class SurveysController extends Controller
      */
     public function index()
     {
-        //$surveys = SURVEY::all();
-        $surveys = SURVEY::orderby('Surveyname','asc')->paginate(10);
+        if (request()->has('sort')) {
+            $surveys = Survey::orderBy('Surveyname', request('sort'))
+            ->paginate(100)->appends('sort', request('sort'));
+        
+        } else {
+            $surveys = Survey::all();
+        }
+ 
+        //$surveys = SURVEY::orderby('Surveyname','asc')->paginate(10);
         return view('surveys.index')->with('surveys',$surveys);
-        //
-        //$posts =  Post::all();
-        //$posts = Post::orderby('created_at','desc')->paginate(10);
-        //return view('posts.index')->with('posts',$posts);
-        //
+        
     }
     /**
      * Show the form for creating a new resource.

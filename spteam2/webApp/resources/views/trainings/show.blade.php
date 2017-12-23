@@ -27,6 +27,14 @@ use App\Training;
         @endif
         <hr>
         @endif
+        <hr>
+        @if(Auth::user()->isHR())
+        <a href ="/trainings/{{$training->TrainingID}}/sendMail" class="btn btn-danger">Reminder Mail</a>
+        <hr> 
+
+
+        
+        @endif
         
         <h1>{{$training->Trainingsname}}</h1>
         

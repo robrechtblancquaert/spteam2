@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-        <h1>Edit Training</h1>
+        <h1>Approve Training</h1>
+        <h2>If you want to change details for the Employee you can edit this section, if not just hit Approve</h2>
         {{ Form::model($training, array('route' => array('approval.update', $training->TrainingID), 'files' => true, 'method' => 'PUT')) }}
             <div class ="form-group">
                 {{Form::label('Trainingsname','Training Name')}}

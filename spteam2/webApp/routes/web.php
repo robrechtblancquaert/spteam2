@@ -37,13 +37,24 @@ Route::resource('books', 'BooksController');
 Route::resource('approval','ApprovalController');
 
 //Route::post('/approval',['uses' => 'ApprovalController@update']);
+/* Route::get('/trainings/{id}/sendMail',function(){
+    $data = [
+        'title' => 'Reminder course',
+        'content' => 'This is a reminder for your course'
+    
+    ];
+    
+    Mail::send('emails.test',$data,function($message){
+    
+        $message->to('andrew.spteam2@gmail.com','Karim')->subject('Hello student how are you');    
+    });
+    }); */
 
-
-
-
-
+   // Route::get('/sendMail', 'EmailController@send');
 //TOM
 Route::resource('surveys', 'SurveysController');
+Route::resource('certifications','CertificateController');
+
 
 
 

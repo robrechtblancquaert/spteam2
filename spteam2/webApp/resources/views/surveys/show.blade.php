@@ -3,7 +3,7 @@
 @section('content')
        
 
-<a href="/surveys"  class="btn btn-default">Go Back</a>
+<a href="/surveys"  class="btn btn-primary">Go Back</a>
         <h1>Surveyname: {{$survey->Surveyname}}</h1>
         <hr>
         <hr>
@@ -24,11 +24,11 @@
                 </div>
        <hr>
       
-       <a href="/surveys/{{$survey->SurveyID}}/edit">Edit</a>
-       {!!Form::open(['action' => ['SurveysController@destroy',$survey->SurveyID], 'method' => 'POST','class' => 'pull-right'])!!}
+       <a class="btn btn-primary" href="/surveys/{{$survey->SurveyID}}/edit">Edit</a>
+      <!--  {!!Form::open(['action' => ['SurveysController@destroy',$survey->SurveyID], 'method' => 'POST','class' => 'pull-right'])!!}
                 {{Form::hidden('_method','DELETE')}}
                 {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
         
         {!!Form::close()!!} 
-       
+        -->
 @endsection

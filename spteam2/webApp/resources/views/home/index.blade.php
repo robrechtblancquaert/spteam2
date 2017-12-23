@@ -5,7 +5,7 @@
  <div class ="midden" align ="center">
      <div class="card" style="width: 50rem;" id="homeDiv">
        <a href="/trainings">
-         <img class="img" img src="{{URL::asset('/img/training.jpeg')}}" alt="profile Pic" height="250" width="300">
+         <img class="img" img src="{{URL::asset('/img/training.jpg')}}" alt="profile Pic" height="250" width="300">
        </a>
          <div class="card-body">
           <h4>Trainings</h4>

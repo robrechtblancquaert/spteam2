@@ -3,7 +3,7 @@
 @section('content')
      
 
-<a href="/books"  class="btn btn-default">Go Back</a>
+<a href="/books"  class="btn btn-primary">Go Back</a>
        <h1><a href="https://books.google.be/books?id={!!$book->ISBN!!}">{{$book->Title}}</a></h1>
      
      
@@ -17,11 +17,11 @@
        </div>
        <hr>
      
-      <a href="/books/{{$book->BookID}}/edit">Edit</a>
-      {!!Form::open(['action' => ['BooksController@destroy',$book->BookID], 'method' => 'POST','class' => 'pull-right'])!!}
+      <a href="/books/{{$book->BookID}}/edit" class="btn btn-primary">Edit</a>
+     <!--  {!!Form::open(['action' => ['BooksController@destroy',$book->BookID], 'method' => 'POST','class' => 'pull-right'])!!}
                {{Form::hidden('_method','DELETE')}}
                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
        
-       {!!Form::close()!!}
+       {!!Form::close()!!} -->
       
 @endsection

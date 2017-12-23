@@ -12,13 +12,17 @@
                 
                 <div class="panel-body">
                     
-
+                    @if(Auth::user()->isHR())
+                    <a href ="/approval" class="btn btn-success">Trainings Pending Approval</a>
+                    @else
                     <a href ="/trainings/create" class="btn btn-primary">Request Training</a>
-                    <h3> Your Requested Trainings </h3>
+                    @endif
+                    
+                    <h3 id="tableHeaderGeneral"> Your Requested Trainings </h3>
                     @if(count($trainings) > 0)
                     <table class="table table-striped">
                         <tr>
-                            <th>Title</th>
+                            <th style="color:black">Title</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -26,12 +30,7 @@
                         <tr>
                             <td class = "generalBoardTrainingName" >{{$training->Trainingsname}}</td>
                             <td><a href="/trainings/{{$training->TrainingID}}/edit" class="btn btn-default" id="btnColor">Edit</a></td>
-                            <td>
-                                {!!Form::open(['action' => ['TrainingsController@destroy',$training->TrainingID], 'method' => 'POST','class' => 'pull-right'])!!}
-                                {{Form::hidden('_method','DELETE')}}
-                                {{Form::submit('Cancel',['class' => 'btn btn-danger'])}}
-                                {!!Form::close()!!}
-                            </td>
+                            
                         </tr>
                         @endforeach
                     </table>

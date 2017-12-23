@@ -18,7 +18,7 @@
                                     <h4 class="card-title">{{$training->Trainingsname}}</h4>
                                     <p class="card-text"></p>
                                     <a href="/trainings/{{$training->TrainingID}}" class="btn btn-primary" id="btnTraining" >
-                                        <p id="titleTraining">{{$training->Trainingsname}}</p>
+                                        <p id="titleTraining"><strong>SHOW</strong></p>
                                     </a>
                                 </div>
                                 </div>

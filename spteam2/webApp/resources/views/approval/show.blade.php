@@ -10,7 +10,7 @@ use App\Training;
         <hr>
         @if(Auth::user()->isHR())
         @if(!$training->Approved)
-        <a href="/approval/{{$training->TrainingID}}/edit" class="btn btn-success">Edit</a>
+        <a href="/approval/{{$training->TrainingID}}/edit" class="btn btn-success">Approve</a>
         
         {!!Form::close()!!} 
         

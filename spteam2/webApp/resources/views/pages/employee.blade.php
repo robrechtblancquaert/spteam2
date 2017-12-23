@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+  @extends('layouts.app')
+  
+  
+  @section('content')  
+   
+   
     <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.2.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script> <!-- http://api.jquery.com/category/plugins/templates/ -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script> 
 
      <script>
             jQuery(document).ready(function () {
@@ -39,29 +31,20 @@
         });
 
         </script>
-</head>
-<body>
-    <!-- nav bar -->
-    <div id="app">
-        
-        @include('inc.navbar')
-        <div class ="container">
-            @include('inc.messages')
-            @yield('content')
-        </div>
-    </div>
-    <h1 id="employee">{{$title}}</h1>
-    </div>
+
+    <h1>{{$title}}</h1>
+        <hr>
         
         <script id="employeeListTmpl" type="text/html">
-           <!-- <ul>
-                
-                <li id="employeeItem">${FirstName} ${LastName}</li> 
-                 
-            </ul> -->
-            
-                <p id="employeeItem"><a href="/employeeInfo?id=${EmployeeID}">${FirstName} ${LastName}</a></p> 
-                
+               
+           <div class="well">
+            <div class="row" style="color:black">
+                     <div class="col-md-8 col-sm-8">
+                         
+                            <h3><a href="/employeeInfo?id=${EmployeeID}">${FirstName} ${LastName}</a></h3> 
+                     </div>
+                </div>
+            </div>
               
         </script>
 
@@ -70,6 +53,4 @@
 
         
 
-   
-</body>
-</html>
+        @endsection

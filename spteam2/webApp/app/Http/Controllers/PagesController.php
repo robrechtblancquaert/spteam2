@@ -37,7 +37,7 @@ class PagesController extends Controller
 
     }
 
-    public function certifications(){
+    /* public function certifications(){
         //$certifications = CERTIFICATION::all();
   
          $certifications = DB::select('select distinct *
@@ -46,7 +46,7 @@ class PagesController extends Controller
          join TRAINING on TRAINING.TrainingID = CERTIFICATION.TrainingID');
   
         return view('pages.certifications')->with('certifications', $certifications);
-     }
+     } */
      public function statistics(){
         
                $data = DB::select('select distinct EMPLOYEE.EmployeeID, EMPLOYEE.Name, TRAINING.Trainingsname, TRAINING.DateTime, CERTIFICATION.CertificationName, STATISTIC.TrainingCount, STATISTIC.CertificationCount , STATISTIC.EmployeeName, STATISTIC.StatisticID, STATISTIC.user_name, users.name, users.id

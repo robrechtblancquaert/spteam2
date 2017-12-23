@@ -26,7 +26,7 @@
             <p  id="colorJumb">This is our official web application for the HelixIR Training tool.</p>
             <hr>
             <p><a class ="btn btn-primary btn-lg" href="/login" role="button" id="buttonLoginColor">Login</a></p>
-            <p><a class ="btn btn-primary btn-lg" href="/register" role="button" id="buttonLoginColor">Login</a></p>
+            
         </div>
         </div>
 

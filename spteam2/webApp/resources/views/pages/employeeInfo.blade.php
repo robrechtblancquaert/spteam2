@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  @extends('layouts.app')
+  
+  
+  @section('content') 
 
     <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.2.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script> <!-- http://api.jquery.com/category/plugins/templates/ -->
@@ -27,7 +18,7 @@
 
             jQuery(document).ready(function () {
             var query = "http://services.odata.org/v2/northwind/northwind.svc/Employees("+id+")" //root uri
-            + "?$select=EmployeeID,FirstName, LastName, BirthDate, Title, HireDate" //reduce the payload to what we need
+            + "?$select=EmployeeID,FirstName, LastName, BirthDate, Title, HireDate , HomePhone , Address , City , PostalCode" //reduce the payload to what we need
            //+ "&$orderby=EmployeeID%20asc" //order by and sort by the latest shows
             //+ "&$top=2" //take the top 5
             + "&$format=json" //give me json
@@ -48,25 +39,7 @@
 
 
         </script>
-       
-</head>
-
-
- <body>
-  <!-- nav bar -->
-    <div id="app">
-        
-        @include('inc.navbar')
-        <div class ="container">
-            @include('inc.messages')
-            @yield('content')
-        </div>
-    </div>
-    
-    </div>  
-        
-
-                
+      
        <p class="greetind-id"></p>
        
        <script>
@@ -75,7 +48,7 @@
        url: "http://services.odata.org/V4/Northwind/Northwind.svc/Employees("+id+")"
        }).then(function(data) {
       $('.greeting-id').append(data.EmployeeID);
-      $('.age').append("Age: "+data.BirthDate.substring(0,9));
+      $('.birthdate').append("Birthdate: "+data.BirthDate.substring(0,9));
       $('.hire').append("Joined: "+ data.HireDate.substring(0,9));
 
        });
@@ -90,18 +63,23 @@
         //echo $toOutput;
         ?>
 
+        <a href="/employee"  class="btn btn-primary">Go Back</a>
         <script id="employeeListTmpl" type="text/html">
-        <h1 id="employee">Information About ${FirstName} ${LastName}</h1><br><br>
-         
+        <h1>Information About ${FirstName} ${LastName}</h1>
+         <hr><hr>
         <div id="infoEmployee">
-                <p class="employees">Employee Full Name: ${FirstName} ${LastName} </p>
-                <br>
-                <p class="age"></p>
-                <br>
-                <p class="hire"></p>
-                <br>
-                <p>Function: ${Title} <br><br>
-              
+                <h3 class="employees">Employee Full Name: ${FirstName} ${LastName} </h3>
+                <hr>
+                <h3 class="birthdate"></h3>
+                <hr>
+                <h3 class="hire"></h3>
+                <hr>
+                <h3>Function: ${Title} </h3>
+                <hr>
+                <h3>Phone number : ${HomePhone}</h3>
+                <hr>
+                <h3>Address : ${Address} ${City} ${PostalCode}</h3>
+                <hr>
         </div>
         
 </script>
@@ -109,5 +87,4 @@
         <div id="employeeList"></div>
         
        
-   </body>
-</html>
+        @endsection

@@ -1,6 +1,6 @@
 
 // Body
-$body-bg: #90b2c9;
+$body-bg: #89b9da;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -24,7 +24,7 @@ $line-height-base: 1.6;
 $text-color: #ffffff;
 
 // Navbar
-$navbar-default-bg: rgb(0, 0, 0);
+$navbar-default-bg: rgb(20, 143, 224);
 
 
 // Buttons
@@ -36,4 +36,4 @@ $input-border-focus: lighten($brand-primary, 25%);
 $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
-$panel-default-heading-bg: rgb(0, 0, 0);
+$panel-default-heading-bg: rgb(20, 143, 224);

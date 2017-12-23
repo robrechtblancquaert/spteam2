@@ -21,7 +21,7 @@ body{
 
 #btnTraining {
     width: 100%;
-    background-color : green;
+    background-color : rgb(20, 143, 224);
 
 }
 #titleTraining{
@@ -146,4 +146,13 @@ ul {
     height: 400px;
     background-color: red;
     margin: auto auto;
+  }
+  #tableHeaderGeneral {
+      color:black;
+  }
+  #DateTime{
+      color:black;
+  }
+  #certificationCSS {
+      color: black;
   }
