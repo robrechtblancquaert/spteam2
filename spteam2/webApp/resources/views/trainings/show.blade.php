@@ -1,3 +1,6 @@
+<?php
+use App\Training;
+?>
 @extends('layouts.app')
 
 @section('content')
@@ -8,14 +11,23 @@
         @if(!Auth::guest())
         @if(Auth::user()->id == $training->user_id)
        <a href="/trainings/{{$training->TrainingID}}/edit" class="btn btn-default" id="btnColor">Edit</a>
-       {!!Form::open(['action' => ['TrainingsController@destroy',$training->TrainingID], 'method' => 'POST','id' =>'cancelBtnShowTraining'])!!}
-                {{Form::hidden('_method','DELETE')}}
-                {{Form::submit('Cancel',['class' => 'btn btn-danger'])}}
+       
+        <hr>
+        @endif
+        @endif
+        @if(Auth::user()->isHR())
+        @if(!$training->Approved)
+        
         
         {!!Form::close()!!} 
-        @endif
+        
+        <h2 style ="color:red">Still Pending Approval!</h2> 
+        @else
+        <h2 style ="color:Lime">Training Approved!</h2> 
         @endif
         <hr>
+        @endif
+        
         <h1>{{$training->Trainingsname}}</h1>
         
                 <div >

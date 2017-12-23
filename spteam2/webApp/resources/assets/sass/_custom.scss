@@ -1,6 +1,6 @@
 body{
 
-    background-color: #14171a;
+    background-color: rgb(95, 95, 93);
 }
 
 .card {
@@ -107,13 +107,12 @@ border-color: black;
 #colorHomeMen{
     color:white;
 }
-
 #employee {
     text-align: center;
 
 }
 #employeeList {
-   text-align: center;
+  // text-align: center;
    
 }
 
@@ -131,6 +130,8 @@ border-color: black;
     
    
 }
+
+
 ul {
     list-style-type: none;
 
@@ -148,3 +149,4 @@ ul {
     background-color: red;
     margin: auto auto;
   }
+

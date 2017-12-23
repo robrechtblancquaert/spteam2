@@ -15,6 +15,7 @@
 
                     <a href ="/trainings/create" class="btn btn-primary">Request Training</a>
                     <h3> Your Requested Trainings </h3>
+                    @if(count($trainings) > 0)
                     <table class="table table-striped">
                         <tr>
                             <th>Title</th>
@@ -34,6 +35,10 @@
                         </tr>
                         @endforeach
                     </table>
+                    @else
+                        <p>You have no posts</p>
+                    @endif
+
                 </div>
             </div>
         </div>

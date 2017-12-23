@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Training;
 
-class TrainingsController extends Controller
+class ApprovalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class TrainingsController extends Controller
      */
     public function index()
     {
-        $trainings = Training::all();
-        return view('trainings.index')->with('trainings',$trainings);
+        $trainings = DB::select('select *
+        from TRAINING WHERE Approved = 0');
+        return view('approval.index')->with('trainings',$trainings);
     }
 
     /**
@@ -25,7 +27,7 @@ class TrainingsController extends Controller
      */
     public function create()
     {
-        return view('trainings.create');
+        //
     }
 
     /**
@@ -36,25 +38,7 @@ class TrainingsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'Trainingsname' => 'required',
-            'Description' => 'required',
-            'Location' => 'required',
-            'DateTime' => 'required',
-            
-       ]);
-
-       //Create new Training
-       
-       $training = new Training;
-       $training->Trainingsname = $request->input('Trainingsname');
-       $training->Description = $request->input('Description');
-       $training->Location = $request->input('Location');
-       $training->DateTime = $request->input('DateTime');
-       $training->user_id = auth()->user()->id;
-       $training->save();
-
-       return redirect('/trainings')->with('success', 'Training Created');
+        //
     }
 
     /**
@@ -67,8 +51,7 @@ class TrainingsController extends Controller
     {
         $training = Training::find($id);
         $role = auth()->user()->Role;
-        return view('trainings.show')->with('training',$training)->with('users',$role);
-        //
+        return view('approval.show')->with('training',$training)->with('users',$role);
     }
 
     /**
@@ -81,10 +64,8 @@ class TrainingsController extends Controller
     {
         $training = Training::find($id);
         // Check for correct user
-        if(auth()->user()->id !== $training->user_id){
-            return redirect('/trainings')->with('error', 'Unauthorized Page');
-        }
-        return view('trainings.edit')->with('training',$training);
+        
+        return view('approval.approve')->with('training',$training);
     }
 
     /**
@@ -94,6 +75,7 @@ class TrainingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -106,13 +88,9 @@ class TrainingsController extends Controller
            
            //Update Training
            $training= Training::find($id);
-           $training->Trainingsname = $request->input('Trainingsname');
-           $training->Description = $request->input('Description');
-           $training->Location = $request->input('Location');
-           $training->DateTime = $request->input('DateTime');
-           
+            $training->Approved = 1;
            $training->save();
-           return redirect('/trainings')->with('success', 'Training Updated');
+           return redirect('/approval')->with('success', 'Training Approved');
     }
 
     /**
@@ -121,7 +99,6 @@ class TrainingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
     public function destroy($id)
     {
         //

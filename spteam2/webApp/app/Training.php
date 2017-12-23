@@ -22,4 +22,14 @@ public function trainingSearch($query,$search){
 //return $query->where('title','LIKE', %search% );
 
 }
+//Approve Training
+public function isPending(){
+    return $this->approveCheck(0);
+}
+public function isApproved(){
+    return $this->approveCheck(1);
+}
+protected function approveCheck($approved = 0) {
+    return $this->Approved === $approved ? true : false;
+}
 }

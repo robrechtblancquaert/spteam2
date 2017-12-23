@@ -25,12 +25,20 @@
                         &nbsp;
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li > <a href ="/home" id ="navbarColor">Home</a></li>
+                        <li > <a href ="/home" id ="navbarColor">Home</a>
                         
                         <li><a href ="/employee" id ="navbarColor"> Employees</a></li>
                         <li > <a href ="/trainings" id ="navbarColor">Trainings</a></li>
-                        <!-- <li > <a href ="/RequestTrainings">Request Training</a> -->
-                        <li > <a href ="/RequestTrainings" id ="navbarColor">Surveys</a></li>
+                        <li><a href="/books" id ="navbarColor">Books</a></li>
+                        
+                        
+                        <li><a href="/certifications" id ="navbarColor">Certifications</a></li>
+                        <li><a href="/surveys" id ="navbarColor">Surveys</a></li>
+                        @if(Auth::user()->isHR())
+                        <li><a href="/statistics" id ="navbarColor">Statistics</a></li>
+                        <li><a href="/approval" id ="navbarColor">Approve Training</a></li>
+                        @endif
+                        
                      </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -38,6 +46,7 @@
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
+                            <img hfre="">
                         @else
                             
                             <li><a href="/trainings/create" id ="navbarColor">Add Training</a></li>
