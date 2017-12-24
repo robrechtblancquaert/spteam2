@@ -65,7 +65,7 @@ public class AdminController {
 			return;
 		}
 		int role = 1;
-		if(admin.isSelected()) role = 2;
+		if(admin.isSelected()) role = 3;
 		
 		try {
 			User.createUser(username.getText(), password.getText(), email.getText(), role);
