@@ -19,7 +19,7 @@ public abstract class User {
 			String hashedPassword = BCrypt.hashpw(password, salt);
 		
 			List received = session.createSQLQuery("SELECT Role FROM users WHERE name = \'" + username + "\' AND password = \'" + hashedPassword + "\'").list();
-			if((Integer) received.get(0) == 2) {
+			if((Integer) received.get(0) == 3) {
 				return true;
 			}
 		} catch(IndexOutOfBoundsException e) {
