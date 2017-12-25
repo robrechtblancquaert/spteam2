@@ -60,7 +60,20 @@ use App\Training;
                         $adress = urlencode($adress);
                         $url = 'http://maps.googleapis.com/maps/api/geocode/xml?address=' . $adress . '&sensor=true';
                           $xml = simplexml_load_file($url);
-                          $status = $xml->status;
+                          $status = $xml->status; 
+                          $accesstimes = 0;
+                          while ($status != 'OK') {
+                                sleep(2);
+                                $accesstimes++;
+                                $xml = simplexml_load_file($url);
+                                $status = $xml->status;
+                                
+                                if ($accesstimes >= 3) {
+                                        echo "<div> Daily limit reached for Google API</div>";
+                                        break;
+                                }
+                          }
+                          var_dump($status);
                           if ($status == 'OK') {
                               $latitude = $xml->result->geometry->location->lat;
                               $longitude = $xml->result->geometry->location->lng;
